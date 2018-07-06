@@ -1,0 +1,30 @@
+{
+  "name": "fyj",
+  "version": "0.0.1",
+  "description": "A Comment System on Your Website in JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "dev-server": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --watch --colors",
+    "dev": "cross-env NODE_ENV=development webpack --progress --display-error-details --colors",
+    "build": "cross-env NODE_ENV=production webpack --progress --display-error-details --colors",
+    "test": "mocha",
+    "rm": "rm -rf dist/*"
+  },
+  "keywords": [
+    "fyj",
+    "comment",
+    "js"
+  ],
+  "author": "Huiyi.FYJ",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^0.4.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "mocha": "^5.2.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
