@@ -1,5 +1,5 @@
 function app () {
-    console.log('2');
+    return 'app';
 }
 
 module.exports = app;
