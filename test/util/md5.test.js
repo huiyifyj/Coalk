@@ -16,7 +16,7 @@ const md5Hash = {
     url: '5cea194c52a2a7ebff46b2443727bcbd'
 }
 
-module.exports = describe('MD5 Test', function () {
+describe('MD5 Test', function () {
 
     it('"' + me.name + '" Converted to MD5 Value Successfully.', function () {
         assert.equal(md5(me.name), md5Hash.name);
