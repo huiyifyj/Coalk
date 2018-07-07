@@ -1,6 +1,6 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const app = require('../src/app');
+import app from '../src/app';
 
 describe('APP Test', function () {
 
