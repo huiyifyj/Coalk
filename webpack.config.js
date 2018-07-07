@@ -21,6 +21,41 @@ module.exports = c = {
     output: {
         path: OUTPUT_PATH,
         filename: OUTPUT_FILE
+    },
+
+    resolve: {
+        extensions: ['.js', '.json', '.css', '.scss']
+    },
+
+    // wepack-dev-server config
+    devServer: {
+        host: '127.0.0.1',
+        port: 3000,
+        contentBase: OUTPUT_PATH,
+        inline: true,
+        compress: true,
+        stats: 'errors-only',
+        overlay: {
+            errors: true,
+            warnings: true,
+        }
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                            presets: ['env']
+                        }
+                    }
+                ]
+            }
+        ]
     }
 
 }
