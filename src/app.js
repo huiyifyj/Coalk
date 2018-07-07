@@ -1,5 +1,7 @@
 function app () {
+
     return 'app';
+
 }
 
-module.exports = app;
+export default app;

@@ -1,5 +1,5 @@
-const app = require('./src/app');
+import app from './src/app';
 
 app();
 
-module.exports = app;
+export default app;
