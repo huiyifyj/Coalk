@@ -25,7 +25,7 @@ class avatar {
     constructor () {
         this.email = email;
 
-        getAvatarUrl();
+        this.getAvatarUrl();
     }
 
     getAvatarUrl () {
