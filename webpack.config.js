@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'development') {
     OUTPUT_FILE = pkg.name + '.min.js';
 }
 
-module.exports = c = {
+module.exports = {
 
     mode: process.env.NODE_ENV,
 
