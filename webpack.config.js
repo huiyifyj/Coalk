@@ -6,6 +6,8 @@ const ENTRY_FILE = path.resolve(__dirname, 'index.js');
 
 const OUTPUT_PATH = path.resolve(__dirname, 'dist');
 
+const POSTCSS_CONFIG_FILE = path.resolve(__dirname, 'postcss.config.js');
+
 let OUTPUT_FILE = pkg.name + '.js';
 
 if (process.env.NODE_ENV !== 'development') {
@@ -65,6 +67,27 @@ module.exports = {
                             interpolate: true
                         }
                     }
+                ]
+            },
+            {
+                test: /\.sass$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                path: POSTCSS_CONFIG_FILE
+                            }
+                        }
+                    },
+                    'sass-loader'
                 ]
             }
         ]

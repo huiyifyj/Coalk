@@ -25,8 +25,12 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
     "html-loader": "^0.5.5",
     "mocha": "^5.2.0",
+    "postcss-loader": "^2.1.6",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
