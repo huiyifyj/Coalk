@@ -25,6 +25,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "cross-env": "^5.2.0",
+    "html-loader": "^0.5.5",
     "mocha": "^5.2.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
