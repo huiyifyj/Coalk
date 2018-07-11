@@ -72,7 +72,9 @@ module.exports = {
             {
                 test: /\.sass$/,
                 use: [
-                    'style-loader',
+                    {
+                        loader: 'style-loader'
+                    },
                     {
                         loader: 'css-loader',
                         options: {
@@ -87,7 +89,9 @@ module.exports = {
                             }
                         }
                     },
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader'
+                    }
                 ]
             }
         ]
