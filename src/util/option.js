@@ -11,7 +11,7 @@ export default (option) => {
     const DEFAULT_OPTION = {
 
         // html id element
-        container: option.el || document.getElementById('fyj'),
+        container: document.getElementById('fyj'),
         // container: option.element || document.getElementById('fyj'),
 
         // Default language for i18n
@@ -41,12 +41,12 @@ export default (option) => {
     }
 
     // databaseURL 为 '' 时
-    if (!databaseURL) {
+    if (!option.databaseURL) {
         throw `Please input databaseURL, otherwise can't init yout app for you.`;
     }
 
     // apiKey 为 '' 时
-    if (!apiKey) {
+    if (!option.apiKey) {
         throw `Please input apiKey, otherwise can't init yout app for you.`;
     }
 
