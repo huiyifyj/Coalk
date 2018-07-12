@@ -1,9 +1,6 @@
 import handleOption from './util/option';
 
-import time from './util/time';
-
 import {input, footer, comment, noComment} from './view/view';
-
 
 class App {
 
@@ -22,10 +19,7 @@ class App {
     }
 
     /**
-     * Init Function
-     * 
-     * @param
-     * @returns
+     * Initialize view interface and other configuration.
      */
     init () {
 
@@ -40,7 +34,7 @@ class App {
 
         ROOT_ELEMENT.innerHTML += footer;
 
-        console.log(input)
+        console.log(ROOT_ELEMENT)
 
     }
 
