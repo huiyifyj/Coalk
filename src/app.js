@@ -2,7 +2,7 @@ import handleOption from './util/option';
 
 import time from './util/time';
 
-import {input, footer} from './view/view';
+import {input, footer, comment, noComment} from './view/view';
 
 
 class App {
@@ -33,6 +33,10 @@ class App {
         const LANGUAGE = this.option.language;
 
         ROOT_ELEMENT.innerHTML += input;
+
+        ROOT_ELEMENT.innerHTML += comment;
+        
+        ROOT_ELEMENT.innerHTML += noComment;
 
         ROOT_ELEMENT.innerHTML += footer;
 
