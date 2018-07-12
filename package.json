@@ -13,9 +13,15 @@
   "keywords": [
     "fyj",
     "comment",
-    "js"
+    "js",
+    "webpack",
+    "scss"
   ],
-  "author": "Huiyi.FYJ",
+  "author": {
+    "name": "Huiyi.FYJ",
+    "email": "jxfengyijie@gmail.com",
+    "url": "http://huiyifyj.cn"
+  },
   "license": "MIT",
   "dependencies": {
     "marked": "^0.4.0"
