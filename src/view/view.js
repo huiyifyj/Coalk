@@ -16,10 +16,10 @@
 
 // }
 
-import comment from './comment.html';
+import input from './input.html';
 import footer from './footer.html';
 
 export {
-    comment,
+    input,
     footer
 }

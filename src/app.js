@@ -1,6 +1,9 @@
+import handleOption from './util/option';
+
 import time from './util/time';
 
-import handleOption from './util/option';
+import {input, footer} from './view/view';
+
 
 class App {
 
@@ -14,11 +17,6 @@ class App {
 
         this.option = handleOption(option);
 
-        const ROOT_ELEMENT = this.option.container;
-        const LANGUAGE = this.option.language;
-
-        ROOT_ELEMENT.innerHTML = `<h1>This is a h1 Tag.</h1>`;
-
         this.init();
 
     }
@@ -30,6 +28,15 @@ class App {
      * @returns
      */
     init () {
+
+        const ROOT_ELEMENT = this.option.container;
+        const LANGUAGE = this.option.language;
+
+        ROOT_ELEMENT.innerHTML += input;
+
+        ROOT_ELEMENT.innerHTML += footer;
+
+        console.log(input)
 
     }
 
