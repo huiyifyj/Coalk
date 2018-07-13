@@ -1,7 +1,7 @@
 <div align=center>💬</div>
 <br><br>
 
-![TravisCI](https://travis-ci.com/huiyifyj/comment.js.svg?branch=master)
+[![TravisCI](https://travis-ci.com/huiyifyj/comment.js.svg?branch=master)](https://travis-ci.com/huiyifyj/comment.js)
 
 > **Note**: This project is developing.
 
