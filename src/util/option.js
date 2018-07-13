@@ -2,8 +2,8 @@
  * Handle your input option.
  * - More to see [README](https://github.com/huiyifyj/comment.js/blob/master/README.md)
  *
- * @param {option} option Your custom option for initializating app.
- * @returns {option} Option that be handled
+ * @param {object} option Your custom option for initializating app.
+ * @return {object} Option that be handled.
  */
 const handle = (option) => {
 
@@ -14,7 +14,7 @@ const handle = (option) => {
 
         /**
          * The HTMLDivElement to accommodate Comment System.
-         * @type {[HTMLDivElement]}
+         * @type {HTMLDivElement}
          */
         container: document.getElementById('fyj'),
 
