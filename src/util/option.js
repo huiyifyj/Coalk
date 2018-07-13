@@ -1,31 +1,52 @@
 /**
- * This your option when you init this app
- * 
- * @returns {option} - option that be handled
+ * Handle your input option.
+ * - More to see [README](https://github.com/huiyifyj/comment.js/blob/master/README.md)
+ *
+ * @param {option} option Your custom option for initializating app.
+ * @returns {option} Option that be handled
+ * @type {Function}
  */
-export default (option) => {
+const handle = (option) => {
 
     /**
      * Default Option
      */
     const DEFAULT_OPTION = {
 
-        // html id element
-        container: document.getElementById('fyj'),
-        // container: option.element || document.getElementById('fyj'),
+        /**
+         * @type {[HTMLDivElement]}
+         */
+        container: option.element || document.getElementById('fyj'),
 
-        // Default language for i18n
+        /**
+         * - Language setting for i18n.
+         * - Default value is your local language according to you browser.
+         * @type {string}
+         */
         language: (navigator.language || navigator.browserLanguage).toLowerCase(),
-        // The index of comments database
+
+        /**
+         * The index of comments database
+         * @type {string}
+         */
         path: window.location.pathname,
 
-        // Firebase Initialize Config
-        databaseURL: '',
+        /**
+         * Firebase app initializating configuration
+         * @type {string}
+         */
         apiKey: '',
 
         /**
-         * Your website domain, such as: blog.huiyifyj.cn
-         * The String don't include 'http(s)://' ...
+         * Firebase database initializating configuration
+         * @type {string}
+         */
+        databaseURL: '',
+
+        /**
+         * - Your website domain, such as: `blog.huiyifyj.cn`
+         * - The String don't include 'http(s)://' ...
+         * @type {string}
          */
         domain: option.domain || window.location.hostname
 
@@ -46,6 +67,9 @@ export default (option) => {
     }
 
     // apiKey 为 '' 时
+    /**
+     * @throws
+     */
     if (!option.apiKey) {
         throw `Please input apiKey, otherwise can't init yout app for you.`;
     }
@@ -53,3 +77,5 @@ export default (option) => {
     return option;
 
 }
+
+export default handle;
