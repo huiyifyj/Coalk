@@ -4,7 +4,6 @@
  *
  * @param {option} option Your custom option for initializating app.
  * @returns {option} Option that be handled
- * @type {Function}
  */
 const handle = (option) => {
 
@@ -14,9 +13,10 @@ const handle = (option) => {
     const DEFAULT_OPTION = {
 
         /**
+         * The HTMLDivElement to accommodate Comment System.
          * @type {[HTMLDivElement]}
          */
-        container: option.element || document.getElementById('fyj'),
+        container: document.getElementById('fyj'),
 
         /**
          * - Language setting for i18n.
@@ -53,7 +53,7 @@ const handle = (option) => {
     };
 
     /**
-     * 如果为空，赋默认值给选项
+     * Assign default values to option.
      */
     for (const KEY in DEFAULT_OPTION) {
         if (DEFAULT_OPTION.hasOwnProperty(KEY) && !option.hasOwnProperty(KEY)) {
@@ -61,17 +61,20 @@ const handle = (option) => {
         }
     }
 
-    // databaseURL 为 '' 时
+    /**
+     * Judge whether character `databaseURL` is null or doesn't exist.
+     * @throws {error}
+     */
     if (!option.databaseURL) {
-        throw `Please input databaseURL, otherwise can't init yout app for you.`;
+        throw `\nPlease input databaseURL and non-null.`;
     }
 
-    // apiKey 为 '' 时
     /**
-     * @throws
+     * Judge whether character `apiKey` is null or doesn't exist.
+     * @throws {error}
      */
     if (!option.apiKey) {
-        throw `Please input apiKey, otherwise can't init yout app for you.`;
+        throw `\nPlease input apiKey and non-null.`;
     }
 
     return option;
