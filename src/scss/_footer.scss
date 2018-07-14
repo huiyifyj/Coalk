@@ -1,0 +1,39 @@
+.loadbtn {
+
+    padding: .35rem;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 1.42857143;
+    display: block;
+
+    button {
+
+        user-select: none; // Make text in elements and sub-elements non-selective
+        outline: none; // Remove the line of border when clicking button
+        cursor: pointer; // Mouse graphic status, hand shape
+        background-color: #d7e5f5;
+        border: 1px solid #c4d3e4;
+        border-radius: 1.9rem;
+        box-shadow: inset 0 1px 0 0 white;
+        color: #313131;
+        padding: 6px 0 7px 0;
+        text-align: center;
+        text-shadow: 0 1px 0.9px 0px #fff;
+        width: 150px;
+        font-size: 12px;
+
+        &:hover {
+
+            border: 1px solid #abbbcc;
+            box-shadow: inset 0 0px 1.5px 1.5px #fff;
+
+        }
+
+        &:active {
+
+            box-shadow: inset 0 0px 1.5px 2px #fff;
+
+        }
+
+    }
+}
