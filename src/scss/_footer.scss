@@ -1,5 +1,9 @@
-.loadbtn {
+.footer {
+    border-top: 1px solid #e5e6e6;
+    padding-top: 18px;
+}
 
+.loadbtn {
     padding: .35rem;
     text-align: center;
     box-sizing: border-box;
@@ -7,7 +11,6 @@
     display: block;
 
     button {
-
         user-select: none; // Make text in elements and sub-elements non-selective
         outline: none; // Remove the line of border when clicking button
         cursor: pointer; // Mouse graphic status, hand shape
@@ -23,17 +26,28 @@
         font-size: 12px;
 
         &:hover {
-
             border: 1px solid #abbbcc;
             box-shadow: inset 0 0px 1.5px 1.5px #fff;
-
         }
 
         &:active {
-
             box-shadow: inset 0 0px 1.5px 2px #fff;
-
         }
+    }
+}
 
+.copyright {
+    font-size: .75rem;
+    text-align: right;
+    color: #777;
+    padding-top: 8px;
+    padding-bottom: 10px;
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            color: #90bdf1;
+        }
     }
 }
