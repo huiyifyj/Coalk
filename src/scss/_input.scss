@@ -45,22 +45,54 @@
     font-size: 12px;
     color: #586069;
     word-wrap: break-word; // Allows long words to wrap to the next line
-    line-height: 1.5;
 
-    .markdown-svg {
-        margin-right: 2px;
-        overflow: hidden;
-        vertical-align: middle;
-    }
+    // .markdown-svg {
+    //     overflow: hidden;
+    //     vertical-align: middle;
+    // }
 
     a:hover {
         color: #0366d6 !important;
     }
 
     button {
+        user-select: none; // Make text in elements and sub-elements non-selective
+        outline: none; // Remove the line of border when clicking button
+        cursor: pointer; // Mouse graphic status, hand shape
         float: right;
         text-align: center;
         color: #313131;
-        border: 1px solid #ededed;
+        background-color: #ededed;
+        border-radius: 1.9rem;
+        padding: 6px 0 7px 0;
+        width: 150px;
+        font-size: 12px;
+        text-shadow: 0 1px 0.9px 0px #ededed;
+        border: 1px solid #fff;
+
+        &:hover {
+            border: 1px solid #ededed;
+            box-shadow: inset 0 0px 1.5px 1.5px #fff;
+        }
+
+        &:active {
+            border: 1px solid #ededed;
+            box-shadow: inset 0 0px 1.5px 2.5px #fff;
+        }
+    }
+}
+
+.comment-info {
+    padding: 10px;
+
+    .comment-num {
+        color: #383a3f !important;
+        font-weight: bold;
+    }
+
+    .comment-svg {
+        overflow: hidden;
+        vertical-align: middle;
+        fill: #a7a7a7;
     }
 }

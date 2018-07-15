@@ -14,3 +14,21 @@ a {
 button {
     cursor: pointer;
 }
+
+svg {
+    vertical-align: middle;
+}
+
+@keyframes messagesCountInserted {
+    0% {
+        outline-color: #fff;
+    }
+
+    50% {
+        outline-color: #555;
+    }
+
+    100% {
+        outline-color: #000;
+    }
+}
