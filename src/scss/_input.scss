@@ -46,13 +46,18 @@
     color: #586069;
     word-wrap: break-word; // Allows long words to wrap to the next line
 
-    // .markdown-svg {
-    //     overflow: hidden;
-    //     vertical-align: middle;
-    // }
+    .markdown-svg {
+        overflow: hidden;
+        vertical-align: middle;
+        fill: #595b61;
+    }
 
     a:hover {
-        color: #0366d6 !important;
+        color: #97b4d6 !important;
+
+        .markdown-svg {
+            fill: #97b4d6;
+        }
     }
 
     button {
