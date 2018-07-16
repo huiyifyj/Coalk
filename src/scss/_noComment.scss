@@ -1,0 +1,17 @@
+.no-comment {
+    height: 200px;
+    border-top: 1px solid #f0f0f0;
+    padding: 10px 0;
+
+    .noreply-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%); // Center the div
+        zoom: 1;
+        font-size: 14px;
+        line-height: 18px !important;
+        margin: auto;
+        text-align: center;
+    }
+}
