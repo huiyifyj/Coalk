@@ -6,12 +6,15 @@
     .noreply-center {
         position: absolute;
         left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%); // Center the div
+        transform: translate(-50%); // Center the div
+        padding-top: 50px;
         zoom: 1;
         font-size: 14px;
         line-height: 18px !important;
-        margin: auto;
         text-align: center;
+
+        .noreply-svg {
+            fill: #807a7a;
+        }
     }
 }
