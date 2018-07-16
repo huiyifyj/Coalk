@@ -2,7 +2,6 @@ import handleOption from './util/option';
 
 import {input, footer, comment, noComment} from './view/view';
 
-import './scss/demo.scss';
 import './scss/index.scss';
 
 /**
