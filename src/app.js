@@ -2,7 +2,7 @@ import handleOption from './util/option';
 
 import {input, footer, comment, noComment} from './view/view';
 
-import database from './firebase/database'
+import database from './firebase/database';
 
 import './scss/index.scss';
 

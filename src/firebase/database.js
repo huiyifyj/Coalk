@@ -11,7 +11,7 @@ class Database {
      */
     constructor (firebaseApp) {
 
-        this.firebaseApp = firebaseApp;
+        this.database = firebaseApp.database();
 
     }
 
