@@ -1,4 +1,4 @@
-export default local = {
+module.exports = {
 
     name: 'name',
     email: 'email',

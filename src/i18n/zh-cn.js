@@ -1,7 +1,7 @@
-export default local = {
+module.exports = {
 
-    name: '名字',
-    email: '电子邮箱',
-    url: '网站'
+    name: '昵称',
+    email: '邮箱',
+    url: 'http(s)://'
 
 }
