@@ -1,0 +1,30 @@
+.comments-wrap {
+    border-top: 1px solid #f0f0f0;
+    padding: 10px;
+    // margin-top: 10px;
+
+    .comment-body {
+        display: inline;
+
+        .avatar-img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            position: relative;
+            vertical-align: top;
+            margin-right: 14px;
+            border-radius: 50%;
+            box-shadow: 0 0 4px 0;
+            float: left;
+            box-sizing: border-box;
+        }
+    
+        .username {
+            display: inline;
+            font-size: 16px;
+            position: relative;
+            line-height: 2;
+            vertical-align: text-top;
+        }
+    }
+}
