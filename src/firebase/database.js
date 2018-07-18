@@ -6,12 +6,11 @@ class Database {
     /**
      * Constructor Function
      *
-     * @param {object} firebaseApp Firebase app instance
      * @constructor
      */
-    constructor (firebaseApp) {
+    constructor () {
 
-        this.database = firebaseApp.database();
+        this.database = firebase.database();
 
     }
 

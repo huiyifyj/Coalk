@@ -14,16 +14,22 @@ class App {
     /**
      * Constructor Function
      *
-     * @param {Object} option - See README
+     * @param {Object} option Your options taht are used to initialize your app.
      * @constructor
      */
     constructor (option) {
 
         this.option = handleOption(option);
 
-        this.firebaseApp = this.initFirebase();
-
+        this.initFirebase();
         this.initView();
+
+        // Enables logging for Firebase database
+        // 默认是不开启的，如果你开启后想关闭那就必须在 使用 false 参数关闭
+        // firebase.database.enableLogging(true, true);
+        firebase.database.enableLogging(false);
+
+        console.log(firebase.database().ref('user').parent);
 
     }
 
