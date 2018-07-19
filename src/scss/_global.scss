@@ -19,6 +19,16 @@ svg {
     vertical-align: middle;
 }
 
+@keyframes textareaLengthen {
+    0% {
+        min-height: 80px;
+    }
+
+    100% {
+        min-height: 120px;
+    }
+}
+
 @keyframes messagesCountInserted {
     0% {
         outline-color: #fff;
