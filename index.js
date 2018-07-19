@@ -6,5 +6,6 @@ new app({
     databaseURL: "https://huiyi-fyj.firebaseio.com"
 });
 
+// Print information on the console
 console.log(`\n
 FYJ | http://huiyifyj.cn | %c VERSION: ${'v0.0.1'}`, 'color: #000; background: #d7e5f5;');

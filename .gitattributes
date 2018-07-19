@@ -1,7 +1,0 @@
-* linguist-vendored
-test/* linguist-vendored=false
-
-*.js linguist-language=javascript
-*.scss linguist-language=css
-*.css linguist-language=css
-*.html linguist-language=html
