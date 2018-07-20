@@ -7,10 +7,6 @@ class Events {
 
     /**
      * Attach submit comment data to button that id is `submit-comment`.
-     *
-     * @param {string} buttonId The button id that you want to opreate.
-     * @param {Array} inputIds Array of ids of input tag.
-     * @return
      */
     static submit () {
 
