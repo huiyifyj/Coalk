@@ -5,36 +5,41 @@
  */
 class Events {
 
-    constructor () {
-
-        this.submit(buttonId, inputIds);
-
-    }
-
     /**
+     * Attach submit comment data to button that id is `submit-comment`.
      *
      * @param {string} buttonId The button id that you want to opreate.
      * @param {Array} inputIds Array of ids of input tag.
      * @return
      */
-    submit (buttonId, inputIds) {
+    submit () {
 
-        const inputObj = {};
+        document.getElementById('submit-comment').addEventListener('click', () => {
 
-        for (let index = 0; index < inputIds.length; index++) {
+            // All id property tag input
+            const inputIds = ['fyj-nick', 'fyj-email', 'fyj-url', 'fyj-content'];
 
-            let inputId = inputIds[index];
+            // A object container all input data
+            const inputObj = {};
 
-            let inputName = document.getElementById(inputId).name;
-            let inputValue = document.getElementById(inputId).value;
+            for (let i = 0; i < inputIds.length; i++) {
 
-            inputObj[inputName] = inputValue;
+                let inputId = inputIds[i];
 
-        }
+                let inputName = document.getElementById(inputId).name;
 
-        document.getElementById(buttonId).addEventListener('click', function () {
-            // let
-        })
+                /**
+                 * @type {string}
+                 */
+                let inputValue = document.getElementById(inputId).value;
+
+                inputObj[inputName] = inputValue;
+
+            }
+
+            console.log(inputObj);
+
+        });
 
     }
 
