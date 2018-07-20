@@ -5,9 +5,6 @@
 
 .loadbtn {
     text-align: center;
-    box-sizing: border-box;
-    line-height: 1.42857143;
-    display: block;
 
     button {
         user-select: none; // Make text in elements and sub-elements non-selective
@@ -42,11 +39,7 @@
     padding-top: 8px;
     padding-bottom: 10px;
 
-    a {
-        text-decoration: none;
-
-        &:hover {
-            color: #90bdf1 !important;
-        }
+    a:hover {
+        color: #90bdf1;
     }
 }
