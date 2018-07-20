@@ -1,12 +1,12 @@
 .no-comment {
-    height: 200px;
+    height: 150px;
     border-top: 1px solid #f0f0f0;
     padding: 10px 0;
 
     .noreply-center {
         position: absolute;
         left: 50%;
-        transform: translate(-50%); // Center the div
+        transform: translate(-50%); // Try center the div
         padding-top: 50px;
         zoom: 1;
         font-size: 14px;
