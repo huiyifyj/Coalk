@@ -12,7 +12,7 @@ class Events {
      * @param {Array} inputIds Array of ids of input tag.
      * @return
      */
-    submit () {
+    static submit () {
 
         document.getElementById('submit-comment').addEventListener('click', () => {
 
