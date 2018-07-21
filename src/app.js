@@ -1,5 +1,6 @@
 import handleOption from './util/option';
-import addEvents from './util/events';
+
+import addEvents from './events';
 
 import {input, footer, comment, noComment} from './view/view';
 
@@ -13,8 +14,6 @@ import './scss/index.scss';
 class App {
 
     /**
-     * Constructor Function
-     *
      * @param {Object} option Your options taht are used to initialize your app.
      * @constructor
      */
@@ -25,23 +24,19 @@ class App {
         this.initFirebase();
         this.initView();
 
-        this.event = new addEvents();
-        console.log(this.event.submit('submit-comment', ['fyj-nick', 'fyj-email', 'fyj-url', 'fyj-content']));
+        addEvents.submit();
 
         // Enables logging for Firebase database
         // 默认是不开启的，如果你开启后想关闭那就必须在 使用 false 参数关闭
         // firebase.database.enableLogging(true, true);
         firebase.database.enableLogging(false);
 
-        // console.log(firebase.database().ref('user').parent);
-        // console.log(database);
-
-        // addEvents.submit('fyj', ['fyj-nick', 'fyj-email', 'fyj-url', 'fyj-content']);
+        // document.getElementById('load-more').hidden = true;
 
     }
 
     /**
-     * Initialize view interface and other configuration.
+     * Initialize essential view interface and other configuration.
      */
     initView () {
 
@@ -56,8 +51,7 @@ class App {
 
     /**
      * Initialize firebase app by apiKey and databaseURL.
-     *
-     * @return {object} A reference to the firebase app service
+     * - See [firebase document](https://firebase.google.com/docs/web/setup).
      */
     initFirebase () {
 
@@ -68,8 +62,6 @@ class App {
             apiKey: APIKEY,
             databaseURL: DATABASEURL
         });
-
-        return firebase;
 
     }
 

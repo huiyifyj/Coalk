@@ -16,7 +16,7 @@ class Events {
             const inputIds = ['fyj-nick', 'fyj-email', 'fyj-url', 'fyj-content'];
 
             // A object container all input data
-            const inputObj = {};
+            let inputObj = {};
 
             for (let i = 0; i < inputIds.length; i++) {
 
