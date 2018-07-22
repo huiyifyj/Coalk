@@ -1,4 +1,14 @@
 /**
+ * Base on
+ * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
+ * Digest Algorithm, as defined in RFC 1321.
+ * Version 2.2 Copyright (C) Paul Johnston 1999 - 2009
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ * Distributed under the BSD License
+ * See http://pajhome.org.uk/crypt/md5 for more info.
+ */
+
+/**
  * Add integers, wrapping at 2^32. This uses 16-bit operations internally
  * to work around bugs in some JS interpreters.
  */
@@ -168,13 +178,6 @@ function rstr2binl (input) {
 }
 
 /*
- * Calculate the MD5 of a raw string
- */
-function rstrMD5 (s) {
-    return binl2rstr(binlMD5(rstr2binl(s), s.length * 8));
-}
-
-/*
  * Convert a raw string to a hex string
  */
 function rstr2hex (input) {
@@ -189,15 +192,18 @@ function rstr2hex (input) {
     return output;
 }
 
-/*
- * Encode a string as utf-8
- */
-function stringToUTF8 (input) {
-    return unescape(encodeURIComponent(input));
-}
-
 function md5 (string) {
-    return rstr2hex(rstrMD5(stringToUTF8(string)));
+
+    // Encode a string as utf-8
+    var stringToUTF8 = unescape(encodeURIComponent(string));
+
+    // Calculate the MD5 of an array of little-endian words, and a bit length.
+    var binlMD5String = binlMD5(rstr2binl(stringToUTF8), stringToUTF8.length * 8)
+
+    // Calculate the MD5 of a raw string
+    var rawString = binl2rstr(binlMD5String);
+
+    return rstr2hex(rawString);
 }
 
 module.exports = md5;
