@@ -19,6 +19,17 @@ const handleOption = (option) => {
         container: document.getElementById('fyj'),
 
         /**
+         * Gravatar CDN
+         * Default cdn is https://gravatar.loli.net/avatar/
+         * You also can use:
+         * - [Official CDN](https://cn.gravatar.com/avatar/)
+         * - https://gravatar.cat.net/avatar/
+         * - https://cdn.v2ex.com/gravatar/
+         * @type {string}
+         */
+        cdn: 'https://gravatar.loli.net/avatar/',
+
+        /**
          * - Language setting for i18n.
          * - Default value is your local language according to you browser.
          * @type {string}
@@ -26,29 +37,29 @@ const handleOption = (option) => {
         language: (navigator.language || navigator.browserLanguage).toLowerCase(),
 
         /**
-         * The index of comments database
-         * @type {string}
-         */
-        path: window.location.pathname,
-
-        /**
-         * Firebase app initializating configuration
+         * Firebase app initializating configuration.
          * @type {string}
          */
         apiKey: '',
 
         /**
-         * Firebase database initializating configuration
+         * Firebase database initializating configuration.
          * @type {string}
          */
         databaseURL: '',
 
         /**
-         * - Your website domain, such as: `blog.huiyifyj.cn`
+         * - Your website domain, such as: `blog.huiyifyj.cn`.
          * - The String don't include 'http(s)://' ...
          * @type {string}
          */
-        domain: option.domain || window.location.hostname
+        domain: option.domain || window.location.hostname,
+
+        /**
+         * The index of comments database.
+         * @type {string}
+         */
+        path: window.location.pathname
 
     };
 
