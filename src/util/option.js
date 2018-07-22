@@ -2,10 +2,10 @@
  * Handle your input option.
  * - More to see [README](https://github.com/huiyifyj/comment.js/blob/master/README.md)
  *
- * @param {object} option Your custom option for initializating app.
+ * @param {object} option Your custom option for initializating app configuration.
  * @return {object} Option that be handled.
  */
-const handle = (option) => {
+const handleOption = (option) => {
 
     /**
      * Default Option
@@ -81,4 +81,4 @@ const handle = (option) => {
 
 }
 
-export default handle;
+export default handleOption;

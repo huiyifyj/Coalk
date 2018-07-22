@@ -1,5 +1,6 @@
 /**
  * **Note**: `firebase` is global namespace
+ *
  * @class Database
  */
 class Database {
