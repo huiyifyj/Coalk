@@ -1,6 +1,6 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const md5 = require('../../src/util/md5');
+import md5 from '../../src/util/md5';
 
 // Instance Object for Testing
 const me = {

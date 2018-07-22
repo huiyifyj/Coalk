@@ -1,74 +1,145 @@
 /**
- * Base on
- * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
- * Digest Algorithm, as defined in RFC 1321.
- * Version 2.2 Copyright (C) Paul Johnston 1999 - 2009
- * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
- * Distributed under the BSD License
- * See http://pajhome.org.uk/crypt/md5 for more info.
+ * This is a file that is used to convert string to md5 hash.
+ * - (c) 2018, Huiyi.FYJ
+ * - Licensed: [MIT](https://opensource.org/licenses/MIT)
+ * - Inspired by [Paul Johnston](http://pajhome.org.uk/crypt/md5), under the BSD License.
+ *
+ * Convert string to md5.
+ *
+ * @param {string} string The raw string you want to convert.
+ * @return {string} The hexadecimal hash string that is handled and converted.
  */
+export default (string) => {
+
+    /**
+     * Encode a string that is inputed as utf-8.
+     * @type {string}
+     */
+    const stringUTF8 = unescape(encodeURIComponent(string));
+
+    /**
+     * A number array that is handled.
+     * @type {number[]}
+     */
+    const stringNumArr = rstr2binl(stringUTF8);
+
+    /**
+     * The number array that is realized by algorithm.
+     * @type {number[]}
+     */
+    const binlMD5Arr = binlMD5(stringNumArr, stringUTF8.length * 8);
+
+    /**
+     * The MD5 of raw string that is calculated by final number array.
+     * @type {string}
+     */
+    const rawString = binl2rstr(binlMD5Arr);
+
+    return rawStringToHex(rawString);
+
+}
 
 /**
- * Add integers, wrapping at 2^32. This uses 16-bit operations internally
- * to work around bugs in some JS interpreters.
+ * Convert a raw string to an array of little-endian words.
+ * Characters >255 have their high-byte ignored silently.
+ *
+ * @param {string} input A string as utf-8.
+ * @return {number[]} A number array that is handled.
  */
-function safeAdd (x, y) {
+const rstr2binl = (input) => {
+
+    let output = [];
+
+    output[(input.length >> 2) - 1] = undefined;
+
+    for (let i = 0; i < output.length; i += 1) {
+        output[i] = 0;
+    }
+
+    let length8 = input.length * 8;
+
+    for (let i = 0; i < length8; i += 8) {
+        output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << (i % 32);
+    }
+
+    return output;
+
+}
+
+/**
+ * Add integers, wrapping at 2^32.
+ * This uses 16-bit operations internally to work around bugs in some JS interpreters.
+ *
+ * @param {number} x One of number that is added.
+ * @param {number} y Another of number that is added.
+ * @return {number} The Optimized number result of the addition of the two integers.
+ */
+const safeAdd = (x, y) => {
+
     let lsw = (x & 0xffff) + (y & 0xffff);
     let msw = (x >> 16) + (y >> 16) + (lsw >> 16);
 
     return (msw << 16) | (lsw & 0xffff);
+
 }
 
 /**
  * Bitwise rotate a 32-bit number to the left.
+ *
+ * @param {numberp[]} num The number array that will be roated.
+ * @param {number} cnt The length of string multiplied by 8.
+ * @return {number} The number result that is rotated to left by bitwise.
  */
-function bitRotateLeft (num, cnt) {
+const bitRotateLeft = (num, cnt) => {
     return (num << cnt) | (num >>> (32 - cnt));
 }
 
-/*
+/**
  * These functions implement the four basic operations the algorithm uses.
+ *
+ * @param {number} `All Param`
+ * @return {number} The result that is realized by algorithm.
  */
-function md5cmn (q, a, b, x, s, t) {
+const md5cmn = (q, a, b, x, s, t) => {
     return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
 }
-function md5ff (a, b, c, d, x, s, t) {
+const md5ff = (a, b, c, d, x, s, t) => {
     return md5cmn((b & c) | (~b & d), a, b, x, s, t);
 }
-function md5gg (a, b, c, d, x, s, t) {
+const md5gg = (a, b, c, d, x, s, t) => {
     return md5cmn((b & d) | (c & ~d), a, b, x, s, t);
 }
-function md5hh (a, b, c, d, x, s, t) {
+const md5hh = (a, b, c, d, x, s, t) => {
     return md5cmn(b ^ c ^ d, a, b, x, s, t);
 }
-function md5ii (a, b, c, d, x, s, t) {
+const md5ii = (a, b, c, d, x, s, t) => {
     return md5cmn(c ^ (b | ~d), a, b, x, s, t);
 }
 
-/*
+/**
  * Calculate the MD5 of an array of little-endian words, and a bit length.
+ * @param {number} x
+ * @param {number} len
+ * @return {number[]}
  */
-function binlMD5 (x, len) {
-    /* append padding */
+const binlMD5 = (x, len) => {
+
+    // append padding
     x[len >> 5] |= 0x80 << (len % 32);
     x[((len + 64) >>> 9 << 4) + 14] = len;
-    
-    var i;
-    var olda;
-    var oldb;
-    var oldc;
-    var oldd;
-    var a = 1732584193;
-    var b = -271733879;
-    var c = -1732584194;
-    var d = 271733878;
-    
-    for (i = 0; i < x.length; i += 16) {
-        olda = a;
-        oldb = b;
-        oldc = c;
-        oldd = d;
 
+    let a = 1732584193;
+    let b = -271733879;
+    let c = -1732584194;
+    let d = 271733878;
+
+    const aOrigin = a;
+    const bOrigin = b;
+    const cOrigin = c;
+    const dOrigin = d;
+
+    for (let i = 0; i < x.length; i += 16) {
+        // First cycle
         a = md5ff(a, b, c, d, x[i], 7, -680876936);
         d = md5ff(d, a, b, c, x[i + 1], 12, -389564586);
         c = md5ff(c, d, a, b, x[i + 2], 17, 606105819);
@@ -85,7 +156,7 @@ function binlMD5 (x, len) {
         d = md5ff(d, a, b, c, x[i + 13], 12, -40341101);
         c = md5ff(c, d, a, b, x[i + 14], 17, -1502002290);
         b = md5ff(b, c, d, a, x[i + 15], 22, 1236535329);
-
+        // Second cycle
         a = md5gg(a, b, c, d, x[i + 1], 5, -165796510);
         d = md5gg(d, a, b, c, x[i + 6], 9, -1069501632);
         c = md5gg(c, d, a, b, x[i + 11], 14, 643717713);
@@ -102,7 +173,7 @@ function binlMD5 (x, len) {
         d = md5gg(d, a, b, c, x[i + 2], 9, -51403784);
         c = md5gg(c, d, a, b, x[i + 7], 14, 1735328473);
         b = md5gg(b, c, d, a, x[i + 12], 20, -1926607734);
-
+        // Third cycle
         a = md5hh(a, b, c, d, x[i + 5], 4, -378558);
         d = md5hh(d, a, b, c, x[i + 8], 11, -2022574463);
         c = md5hh(c, d, a, b, x[i + 11], 16, 1839030562);
@@ -119,7 +190,7 @@ function binlMD5 (x, len) {
         d = md5hh(d, a, b, c, x[i + 12], 11, -421815835);
         c = md5hh(c, d, a, b, x[i + 15], 16, 530742520);
         b = md5hh(b, c, d, a, x[i + 2], 23, -995338651);
-
+        // Fourth cycle
         a = md5ii(a, b, c, d, x[i], 6, -198630844);
         d = md5ii(d, a, b, c, x[i + 7], 10, 1126891415);
         c = md5ii(c, d, a, b, x[i + 14], 15, -1416354905);
@@ -136,74 +207,52 @@ function binlMD5 (x, len) {
         d = md5ii(d, a, b, c, x[i + 11], 10, -1120210379);
         c = md5ii(c, d, a, b, x[i + 2], 15, 718787259);
         b = md5ii(b, c, d, a, x[i + 9], 21, -343485551);
-
-        a = safeAdd(a, olda);
-        b = safeAdd(b, oldb);
-        c = safeAdd(c, oldc);
-        d = safeAdd(d, oldd);
+        // Last cycle
+        a = safeAdd(a, aOrigin);
+        b = safeAdd(b, bOrigin);
+        c = safeAdd(c, cOrigin);
+        d = safeAdd(d, dOrigin);
     }
+
     return [a, b, c, d];
+
 }
 
-/*
- * Convert an array of little-endian words to a string
+/**
+ * Convert an array of little-endian words to a string.
+ *
+ * @param {number[]} input A number array.
+ * @return {string} The raw string that is converted.
  */
-function binl2rstr (input) {
-    var i;
-    var output = '';
-    var length32 = input.length * 32;
+const binl2rstr = (input) => {
 
-    for (i = 0; i < length32; i += 8) {
+    let output = '';
+    let length32 = input.length * 32;
+
+    for (let i = 0; i < length32; i += 8) {
         output += String.fromCharCode((input[i >> 5] >>> (i % 32)) & 0xff);
     }
+
     return output;
+
 }
 
-/*
- * Convert a raw string to an array of little-endian words
- * Characters >255 have their high-byte silently ignored.
+/**
+ * Convert a raw string to a hex string.
+ *
+ * @param {string} input Raw string.
+ * @return {string} A hexadecimal string that is converted.
  */
-function rstr2binl (input) {
-    var i;
-    var output = [];
-    output[(input.length >> 2) - 1] = undefined;
-    for (i = 0; i < output.length; i += 1) {
-        output[i] = 0;
-    }
-    var length8 = input.length * 8;
-    for (i = 0; i < length8; i += 8) {
-        output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << (i % 32);
-    }
-    return output;
-}
+const rawStringToHex = (input) => {
 
-/*
- * Convert a raw string to a hex string
- */
-function rstr2hex (input) {
-    var hexTab = '0123456789abcdef';
-    var output = '';
-    var x;
-    var i;
-    for (i = 0; i < input.length; i += 1) {
-        x = input.charCodeAt(i);
+    const hexTab = '0123456789abcdef';
+    let output = '';
+
+    for (let i = 0; i < input.length; i += 1) {
+        let x = input.charCodeAt(i);
         output += hexTab.charAt((x >>> 4) & 0x0f) + hexTab.charAt(x & 0x0f);
     }
+
     return output;
+
 }
-
-function md5 (string) {
-
-    // Encode a string as utf-8
-    var stringToUTF8 = unescape(encodeURIComponent(string));
-
-    // Calculate the MD5 of an array of little-endian words, and a bit length.
-    var binlMD5String = binlMD5(rstr2binl(stringToUTF8), stringToUTF8.length * 8)
-
-    // Calculate the MD5 of a raw string
-    var rawString = binl2rstr(binlMD5String);
-
-    return rstr2hex(rawString);
-}
-
-module.exports = md5;
