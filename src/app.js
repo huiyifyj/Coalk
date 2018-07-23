@@ -4,8 +4,6 @@ import addEvents from './events';
 
 import {input, footer, comment, noComment} from './view/view';
 
-import database from './firebase/database';
-
 import './scss/index.scss';
 
 /**
@@ -14,7 +12,7 @@ import './scss/index.scss';
 class App {
 
     /**
-     * @param {Object} option Your options taht are used to initialize your app.
+     * @param {Object} option Your options taht are used to initialize your comment app.
      * @constructor
      */
     constructor (option) {
@@ -25,13 +23,6 @@ class App {
         this.initView();
 
         addEvents.submit();
-
-        // Enables logging for Firebase database
-        // 默认是不开启的，如果你开启后想关闭那就必须在 使用 false 参数关闭
-        // firebase.database.enableLogging(true, true);
-        firebase.database.enableLogging(false);
-
-        // document.getElementById('load-more').hidden = true;
 
     }
 
@@ -47,6 +38,8 @@ class App {
         // ROOT_ELEMENT.innerHTML += noComment;
         ROOT_ELEMENT.innerHTML += footer;
 
+        document.getElementById('load-more').hidden = true;
+
     }
 
     /**
@@ -58,6 +51,7 @@ class App {
         const APIKEY = this.option.apiKey;
         const DATABASEURL = this.option.databaseURL;
 
+        // Note: 'firebase' is global namespace
         firebase.initializeApp({
             apiKey: APIKEY,
             databaseURL: DATABASEURL
