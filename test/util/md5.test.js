@@ -5,14 +5,14 @@ import md5 from '../../src/util/md5';
 // Instance Object for Testing
 const me = {
     name: 'huiyifyj',
-    email: 'jxfengyijie@gmail.com',
+    email: 'i@huiyifyj.cn',
     url: 'http://huiyifyj.cn'
 }
 
 // Related MD5 Hash Value
 const md5Hash = {
     name: 'f851f84309625ba941a1c99565039474',
-    email: 'c18c2dc71e66820e1d31c2ae1eec5d51',
+    email: '11b334f003ef029c9d154f5dbae18b44',
     url: '5cea194c52a2a7ebff46b2443727bcbd'
 }
 
