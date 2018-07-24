@@ -4,6 +4,7 @@ import addEvents from './events';
 
 import {input, footer, comment, noComment} from './view/view';
 
+// Import CSS stylesheet
 import './scss/index.scss';
 
 /**
@@ -12,7 +13,7 @@ import './scss/index.scss';
 class App {
 
     /**
-     * @param {Object} option Your options taht are used to initialize your comment app.
+     * @param {Object} option Your options that are used to initialize your comment app.
      * @constructor
      */
     constructor (option) {
@@ -34,11 +35,9 @@ class App {
         const ROOT_ELEMENT = this.option.container;
 
         ROOT_ELEMENT.innerHTML += input;
-        // ROOT_ELEMENT.innerHTML += comment;
-        // ROOT_ELEMENT.innerHTML += noComment;
+        ROOT_ELEMENT.innerHTML += comment;
+        ROOT_ELEMENT.innerHTML += noComment;
         ROOT_ELEMENT.innerHTML += footer;
-
-        document.getElementById('load-more').hidden = true;
 
     }
 

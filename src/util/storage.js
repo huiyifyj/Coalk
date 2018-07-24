@@ -1,5 +1,5 @@
 /**
- * Store some data by `localStorage`.
+ * See [MDZ doc](https://developer.mozilla.org/en-US/docs/Web/API/Storage/LocalStorage) to learn about `localStorage`.
  */
 const storage = window.localStorage;
 

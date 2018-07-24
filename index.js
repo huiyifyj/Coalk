@@ -3,7 +3,6 @@ import app from './src/app';
 import pkg from './package.json';
 
 new app({
-    // element: '',
     apiKey: "AIzaSyCacfaap-c6whB0mQiYoxzYN_1rchuZKJU",
     databaseURL: "https://huiyi-fyj.firebaseio.com"
 });
