@@ -1,3 +1,5 @@
+import app from './app';
+
 /**
  * Attach event that be used many times to someone element
  *
@@ -32,6 +34,11 @@ class Events {
                 inputObj[inputName] = inputValue;
 
             }
+
+            firebase.database().ref(inputObj.name).set(inputObj, function (error) {
+                if (error) {console,log('error')}
+                else {console.log('Comment successful')}
+            })
 
             console.log(inputObj);
 
