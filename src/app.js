@@ -1,6 +1,6 @@
 import handleOption from './util/option';
 
-import addEvents from './events';
+import submit from './events/submit';
 
 import {input, footer, comment, noComment} from './view/view';
 
@@ -23,8 +23,6 @@ class App {
         this.initFirebase();
         this.initView();
 
-        addEvents.submit();
-
     }
 
     /**
@@ -38,6 +36,11 @@ class App {
         ROOT_ELEMENT.innerHTML += comment;
         ROOT_ELEMENT.innerHTML += noComment;
         ROOT_ELEMENT.innerHTML += footer;
+
+        /**
+         * Attach submit event to button that id is `submit-comment`.
+         */
+        document.getElementById('submit-comment').addEventListener('click', submit);
 
     }
 
