@@ -1,5 +1,5 @@
 /**
- * Accept Gravatar JSON data by XMLHttpRequest and verify it.
+ * Accept Gravatar JSON data by XMLHttpRequest.
  *
  * @param {string} url The JSON data url.
  * @return {Promise} Promise.
@@ -15,9 +15,6 @@ export default (url) => {
         xhr.onload = function () {
 
             if (this.status === 200) {
-
-                console.log(this.response)
-
                 resolve(this.response);
             }
             else {
