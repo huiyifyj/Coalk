@@ -1,12 +1,12 @@
 /**
  * Attach submit comment data to button that id is `submit-comment`.
- */ 
+ */
 export default () => {
 
     // All id property input tag.
-    const inputIds = ['fyj-nick', 'fyj-email', 'fyj-url', 'fyj-content'];
+    const inputIds = ['fyj-name', 'fyj-email', 'fyj-url', 'fyj-content'];
 
-    // A object container all input data
+    // A object container all input data.
     let inputObj = {};
 
     for (let i = 0; i < inputIds.length; i++) {
@@ -30,5 +30,25 @@ export default () => {
     // })
 
     console.log(inputObj);
+    console.log(checkInput(inputObj))
 
+}
+
+/**
+ * Check the format of the email and url.
+ *
+ * @param {object} data
+ * @return {boolean}
+ */
+const checkInput = (data) => {
+
+    const urlReg = /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+
+    if(!data.name || !data.email || !data.comment) {
+        return false;
     }
+    else if (!urlReg.test(data.url)) {
+        // ...
+    }
+
+}
