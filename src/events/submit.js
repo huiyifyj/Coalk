@@ -1,5 +1,7 @@
 import verify from './gravatarAPI';
 
+import database from '../firebase/database';
+
 /**
  * Bind submit comment data event to button that id is `submit-comment`.
  *
@@ -18,10 +20,6 @@ export default () => {
         let inputId = inputIds[i];
 
         let inputName = document.getElementById(inputId).name;
-
-        /**
-         * @type {string}
-         */
         let inputValue = document.getElementById(inputId).value;
 
         inputObj[inputName] = inputValue;
@@ -33,23 +31,21 @@ export default () => {
         verify(inputObj).then((bool) => {
             if (bool){
                 console.log('Input Legal');
+
+                firebase.database().ref(inputObj.name).set(inputObj, function (error) {
+                    if (error) {console,log('error')}
+                    else {console.log('Comment successful')}
+                });
             }
             else {
                 throw 'Correct Name and E-mail.';
             }
-        }, (error) => {
-            throw error;
         });
 
     }
     else {
         throw 'Please Enter the Correct Text Format.';
     }
-
-    // firebase.database().ref(inputObj.name).set(inputObj, function (error) {
-    //     if (error) {console,log('error')}
-    //     else {console.log('Comment successful')}
-    // })
 
     console.log(inputObj);
 

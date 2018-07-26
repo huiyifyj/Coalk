@@ -6,7 +6,7 @@ export default {
     /**
      * Calculate the interval between comments posted and now.
      * And return a string mark interval.
-     * 
+     *
      * @param {Date} time - The comment posted time.
      * @returns {String} Generat interval time.
      */
@@ -56,7 +56,7 @@ export default {
 
 /**
  * Format The Date.
- * 
+ *
  * @param {Date} time - The comment posted time
  * @returns {String} Generat format time
  */
