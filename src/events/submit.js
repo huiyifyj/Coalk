@@ -1,5 +1,9 @@
+import verify from './gravatarAPI';
+
 /**
  * Bind submit comment data event to button that id is `submit-comment`.
+ *
+ * @param {string} cdn The gravatar cdn url.
  */
 export default () => {
 
@@ -24,13 +28,30 @@ export default () => {
 
     }
 
+    if (checkInput(inputObj)) {
+
+        verify(inputObj).then((bool) => {
+            if (bool){
+                console.log('Input Legal');
+            }
+            else {
+                throw 'Correct Name and E-mail.';
+            }
+        }, (error) => {
+            throw error;
+        });
+
+    }
+    else {
+        throw 'Please Enter the Correct Text Format.';
+    }
+
     // firebase.database().ref(inputObj.name).set(inputObj, function (error) {
     //     if (error) {console,log('error')}
     //     else {console.log('Comment successful')}
     // })
 
     console.log(inputObj);
-    console.log(checkInput(inputObj))
 
 }
 
@@ -44,11 +65,10 @@ const checkInput = (data) => {
 
     const urlReg = /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
 
-    if(!data.name || !data.email || !data.comment) {
+    if (data.name && data.email && data.comment && urlReg.test(data.url)) {
+        return true;
+    } else {
         return false;
-    }
-    else if (!urlReg.test(data.url)) {
-        // ...
     }
 
 }
