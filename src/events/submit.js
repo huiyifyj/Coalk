@@ -30,8 +30,6 @@ export default () => {
 
         verify(inputObj).then((bool) => {
             if (bool){
-                console.log('Input Legal');
-
                 new database().submit(inputObj);
             }
             else {

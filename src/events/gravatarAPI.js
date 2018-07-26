@@ -15,7 +15,7 @@ export default (data) => {
     /**
      * @type {string}
      */
-    const CDN = 'https://cn.gravatar.com/';
+    const CDN = 'https://en.gravatar.com/';
 
     const promise = new Promise((resolve, reject) => {
 
