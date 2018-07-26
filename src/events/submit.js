@@ -1,5 +1,5 @@
 /**
- * Attach submit comment data to button that id is `submit-comment`.
+ * Bind submit comment data event to button that id is `submit-comment`.
  */
 export default () => {
 
