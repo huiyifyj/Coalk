@@ -22,9 +22,26 @@ class App {
 
         this.option = handleOption(option);
 
-        this.database = new database(this.option);
+        this.initFirebase();
+
+        this.database = new database();
 
         this.initView();
+        
+
+    }
+
+    /**
+     * Note: 'firebase' is global namespace
+     * Initialize firebase app by apiKey and databaseURL.
+     * - See [firebase document](https://firebase.google.com/docs/web/setup).
+     */
+    initFirebase () {
+
+        firebase.initializeApp({
+            apiKey: this.option.apiKey,
+            databaseURL: this.option.databaseURL
+        });
 
     }
 

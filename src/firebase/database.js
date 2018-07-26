@@ -10,27 +10,9 @@ class Database {
      *
      * @constructor
      */
-    constructor (option) {
-
-        this.option = option;
-
-        this.initFirebase();
+    constructor () {
 
         this.database = firebase.database();
-
-    }
-
-    /**
-     * Note: 'firebase' is global namespace
-     * Initialize firebase app by apiKey and databaseURL.
-     * - See [firebase document](https://firebase.google.com/docs/web/setup).
-     */
-    initFirebase () {
-
-        firebase.initializeApp({
-            apiKey: this.option.apiKey,
-            databaseURL: this.option.databaseURL
-        });
 
     }
 
@@ -42,8 +24,12 @@ class Database {
     submit (inputObj) {
 
         this.database.ref('/').push().set(inputObj, function (error) {
-            if (error) {console,log('error')}
-            else {console.log('Comment successful')}
+            if (error) {
+                throw error;
+            }
+            else {
+                console.log('Comment successful')
+            }
         });
 
     }
