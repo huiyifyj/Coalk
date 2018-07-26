@@ -32,10 +32,7 @@ export default () => {
             if (bool){
                 console.log('Input Legal');
 
-                firebase.database().ref(inputObj.name).set(inputObj, function (error) {
-                    if (error) {console,log('error')}
-                    else {console.log('Comment successful')}
-                });
+                new database().submit(inputObj);
             }
             else {
                 throw 'Correct Name and E-mail.';
