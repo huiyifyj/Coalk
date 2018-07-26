@@ -1,29 +1,20 @@
 /**
- * Time Class
+ * Handle time
  */
-class Time {
-
-    /**
-     * Constructor Function
-     *
-     * @param {Data} time - The time of comment posted.
-     * @constructor
-     */
-    constructor (time) {
-        this.time = time;
-    }
+export default {
 
     /**
      * Calculate the interval between comments posted and now.
      * And return a string mark interval.
      * 
-     * @param {Date} time - The comment posted time
-     * @returns {String} Generat interval time
+     * @param {Date} time - The comment posted time.
+     * @returns {String} Generat interval time.
      */
-    intervalTime (time) {
+    intervalTime: (time) => {
 
         let POST_TIME = time.getTime();
         let NOW_TIME = new Date().getTime();
+
         let INTERVAL_TIME = NOW_TIME - POST_TIME;
 
         var days = Math.floor(INTERVAL_TIME / (24 * 3600 * 1000));
@@ -49,7 +40,9 @@ class Time {
             return hours + ' 小时前';
         }
         
-        if (days < 0) { return '刚刚' };
+        if (days < 0) {
+            return '刚刚';
+        }
 
         if (days < 8) {
             return days + ' 天前';
@@ -59,22 +52,20 @@ class Time {
 
     }
 
-    /**
-     * Format The Date.
-     * 
-     * @param {Date} time - The comment posted time
-     * @returns {String} Generat format time
-     */
-    formatData (time) {
-
-        let DAY = time.getDate();
-        let MONTH = time.getMonth() + 1;
-        let YEAR = time.getFullYear();
-
-        return `${YEAR}-${MONTH}-${DAY}`;
-
-    }
-
 }
 
-export default Time;
+/**
+ * Format The Date.
+ * 
+ * @param {Date} time - The comment posted time
+ * @returns {String} Generat format time
+ */
+const formatData = (time) => {
+
+    let DAY = time.getDate();
+    let MONTH = time.getMonth() + 1;
+    let YEAR = time.getFullYear();
+
+    return `${YEAR}-${MONTH}-${DAY}`;
+
+}
