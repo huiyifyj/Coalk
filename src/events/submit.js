@@ -42,8 +42,6 @@ export default () => {
         throw 'Please Enter the Correct Text Format.';
     }
 
-    console.log(inputObj);
-
 }
 
 /**
