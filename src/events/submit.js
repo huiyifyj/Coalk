@@ -1,4 +1,4 @@
-import verify from './gravatarAPI';
+import verify from './verify';
 
 import database from '../firebase/database';
 
