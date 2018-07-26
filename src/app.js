@@ -4,6 +4,8 @@ import submit from './events/submit';
 
 import {input, footer, comment, noComment} from './view/view';
 
+import database from './firebase/database';
+
 // Import CSS stylesheet
 import './scss/index.scss';
 
@@ -20,7 +22,8 @@ class App {
 
         this.option = handleOption(option);
 
-        this.initFirebase();
+        this.database = new database(this.option);
+
         this.initView();
 
     }
@@ -42,22 +45,10 @@ class App {
          */
         document.getElementById('submit-comment').addEventListener('click', submit);
 
-    }
-
-    /**
-     * Initialize firebase app by apiKey and databaseURL.
-     * - See [firebase document](https://firebase.google.com/docs/web/setup).
-     */
-    initFirebase () {
-
-        const APIKEY = this.option.apiKey;
-        const DATABASEURL = this.option.databaseURL;
-
-        // Note: 'firebase' is global namespace
-        firebase.initializeApp({
-            apiKey: APIKEY,
-            databaseURL: DATABASEURL
-        });
+        /**
+         * Listen Comments Num.
+         */
+        this.database.commentsNum();
 
     }
 
