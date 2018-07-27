@@ -1,3 +1,6 @@
+import noComment from '../view/noComment.html';
+import comment from '../view/comment.html';
+
 /**
  * **Note**: `firebase` is global namespace
  *
@@ -14,6 +17,8 @@ class Database {
 
         this.database = firebase.database();
 
+        this.ROOT = this.database.ref('/');
+
     }
 
     /**
@@ -23,7 +28,7 @@ class Database {
      */
     submit (inputObj) {
 
-        this.database.ref('/').push().set(inputObj, function (error) {
+        this.ROOT.push().set(inputObj, function (error) {
             if (error) {
                 throw error;
             }
@@ -35,20 +40,29 @@ class Database {
     }
 
     /**
-     * Get comments number totally.
+     * Get comments number totally and listening it.
      */
     commentsNum () {
 
-        let commentsNum = this.database.ref('/commentsNum');
-        commentsNum.on('value', function(snapshot) {
+        let commentsNum = this.ROOT.child('commentsNum');
+
+        this.ROOT.on('child_added', function (data) {
+            console.log(data.val().name);
+        })
+
+        this.ROOT.on('value', function(snapshot) {
 
             let ELEMENT = document.querySelector('.comment-num');
 
             if (snapshot.val()) {
-                ELEMENT.innerText = snapshot.val();
+                ELEMENT.innerText = snapshot.numChildren();
+
+                document.getElementById('comments-main').innerHTML = comment;
             }
             else {
                 ELEMENT.innerText = 'No';
+
+                document.getElementById('comment').innerHTML = noComment;
             }
 
         });

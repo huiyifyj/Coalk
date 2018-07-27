@@ -2,7 +2,6 @@ import handleOption from './util/option';
 
 import submit from './events/submit';
 
-// import {input, footer, comment, noComment} from './view/view';
 import input from './view/input.html';
 import footer from './view/footer.html';
 
@@ -58,8 +57,6 @@ class App {
         // Listening comments number event.
         this.database.commentsNum();
 
-        // ROOT_ELEMENT.innerHTML += comment;
-        // ROOT_ELEMENT.innerHTML += noComment;
         ROOT_ELEMENT.innerHTML += footer;
 
         /**
