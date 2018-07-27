@@ -5,9 +5,9 @@ import database from '../firebase/database';
 /**
  * Bind submit comment data event to button that id is `submit-comment`.
  *
- * @param {string} cdn The gravatar cdn url.
+ * @param {object} database The database that is handled from app.js file.
  */
-export default () => {
+export default (database) => {
 
     // All id property input tag.
     const inputIds = ['fyj-name', 'fyj-email', 'fyj-url', 'fyj-content'];
@@ -30,7 +30,7 @@ export default () => {
 
         verify(inputObj).then((bool) => {
             if (bool){
-                new database().submit(inputObj);
+                database.submit(inputObj);
             }
             else {
                 throw 'Correct Name and E-mail.';

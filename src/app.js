@@ -25,7 +25,7 @@ class App {
 
         this.initFirebase();
 
-        this.database = new database();
+        this.database = new database(this.option);
 
         this.initView();
 
@@ -62,7 +62,9 @@ class App {
         /**
          * Attach submit event to button that id is `submit-comment`.
          */
-        document.getElementById('submit-comment').addEventListener('click', submit);
+        document.getElementById('submit-comment').addEventListener('click', () => {
+            submit(this.database);
+        });
 
     }
 
