@@ -1,5 +1,6 @@
 import noComment from '../view/noComment.html';
-import comment from '../view/comment.html';
+
+import commentTmp from '../view/comment';
 
 /**
  * **Note**: `firebase` is global namespace
@@ -44,11 +45,11 @@ class Database {
      */
     commentsNum () {
 
-        let commentsNum = this.ROOT.child('commentsNum');
-
         this.ROOT.on('child_added', function (data) {
             console.log(data.val().name);
-        })
+
+            document.getElementById('comments-main').innerHTML += new commentTmp(data.val()).template();
+        });
 
         this.ROOT.on('value', function(snapshot) {
 
@@ -56,13 +57,11 @@ class Database {
 
             if (snapshot.val()) {
                 ELEMENT.innerText = snapshot.numChildren();
-
-                document.getElementById('comments-main').innerHTML = comment;
             }
             else {
                 ELEMENT.innerText = 'No';
 
-                document.getElementById('comment').innerHTML = noComment;
+                document.getElementById('comments-main').innerHTML = noComment;
             }
 
         });
