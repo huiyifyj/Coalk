@@ -2,7 +2,9 @@ import handleOption from './util/option';
 
 import submit from './events/submit';
 
-import {input, footer, comment, noComment} from './view/view';
+// import {input, footer, comment, noComment} from './view/view';
+import input from './view/input.html';
+import footer from './view/footer.html';
 
 import database from './firebase/database';
 
@@ -27,7 +29,6 @@ class App {
         this.database = new database();
 
         this.initView();
-        
 
     }
 
@@ -53,19 +54,18 @@ class App {
         const ROOT_ELEMENT = this.option.container;
 
         ROOT_ELEMENT.innerHTML += input;
-        ROOT_ELEMENT.innerHTML += comment;
-        ROOT_ELEMENT.innerHTML += noComment;
+
+        // Listening comments number event.
+        this.database.commentsNum();
+
+        // ROOT_ELEMENT.innerHTML += comment;
+        // ROOT_ELEMENT.innerHTML += noComment;
         ROOT_ELEMENT.innerHTML += footer;
 
         /**
          * Attach submit event to button that id is `submit-comment`.
          */
         document.getElementById('submit-comment').addEventListener('click', submit);
-
-        /**
-         * Listen Comments Num.
-         */
-        this.database.commentsNum();
 
     }
 
