@@ -10,13 +10,18 @@ const POSTCSS_CONFIG_FILE = path.resolve(__dirname, 'postcss.config.js');
 
 let OUTPUT_FILE = pkg.name + '.js';
 
+let DEVTOOL = 'cheap-module-source-map';
+
 if (process.env.NODE_ENV !== 'development') {
     OUTPUT_FILE = pkg.name + '.min.js';
+    DEVTOOL = 'source-map';
 }
 
 module.exports = {
 
     mode: process.env.NODE_ENV,
+
+    devtool: DEVTOOL,
 
     entry: ENTRY_FILE,
 
@@ -59,18 +64,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            minimize: false,
-                            interpolate: true
-                        }
-                    }
-                ]
-            },
-            {
                 test: /\.scss$/,
                 use: [
                     {
@@ -79,7 +72,9 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            importLoaders: 1
+                            importLoaders: 1,
+                            minimize: true,
+                            sourceMap: true
                         }
                     },
                     {
@@ -92,6 +87,18 @@ module.exports = {
                     },
                     {
                         loader: 'sass-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: false,
+                            interpolate: true
+                        }
                     }
                 ]
             }
