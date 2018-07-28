@@ -1,7 +1,3 @@
-import commentTmp from '../view/comment';
-
-import noComment from '../view/noComment.html';
-
 /**
  * **Note**: `firebase` is global namespace
  *
@@ -18,7 +14,6 @@ class Database {
     constructor (option) {
 
         this.path = option.path;
-        console.log(this.path)
 
         this.database = firebase.database();
 
@@ -46,36 +41,21 @@ class Database {
 
     /**
      * Get comments number totally and listening it.
+     *
+     * @param {function} f The function that display comments number.
      */
-    commentsNum () {
+    commentsNum (f) {
 
-        this.ROOT.on('value', function(snapshot) {
-
-            let ELEMENT = document.querySelector('.comment-num');
-
-            if (snapshot.val()) {
-                ELEMENT.innerText = snapshot.numChildren();
-            }
-            else {
-                ELEMENT.innerText = 'No';
-
-                document.getElementById('comments-main').innerHTML = noComment;
-            }
-
-        });
+        this.ROOT.on('value', f);
 
     }
 
     /**
      * Display comments.
      */
-    displayComments () {
+    displayComments (f) {
 
-        this.ROOT.on('child_added', function (data) {
-            console.log(data.val().name);
-
-            document.getElementById('comments-main').innerHTML += new commentTmp(data.val()).template();
-        });
+        this.ROOT.on('child_added', f);
 
     }
 
