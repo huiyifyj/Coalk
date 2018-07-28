@@ -1,7 +1,10 @@
 module.exports = {
 
     name: 'name',
-    email: 'email',
-    url: 'url'
+    email: 'e-mail',
+    url: 'http(s)://',
+    placeholder: 'Leave your comment',
+    submit: 'Comment',
+    comments: 'Comments'
 
 }
