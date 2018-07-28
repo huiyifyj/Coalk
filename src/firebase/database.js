@@ -1,6 +1,6 @@
-import noComment from '../view/noComment.html';
-
 import commentTmp from '../view/comment';
+
+import noComment from '../view/noComment.html';
 
 /**
  * **Note**: `firebase` is global namespace
@@ -12,9 +12,13 @@ class Database {
     /**
      * Constructor Function
      *
+     * @param {object} option The option that is handled from app.js file.
      * @constructor
      */
-    constructor () {
+    constructor (option) {
+
+        this.path = option.path;
+        console.log(this.path)
 
         this.database = firebase.database();
 
@@ -45,12 +49,6 @@ class Database {
      */
     commentsNum () {
 
-        this.ROOT.on('child_added', function (data) {
-            console.log(data.val().name);
-
-            document.getElementById('comments-main').innerHTML += new commentTmp(data.val()).template();
-        });
-
         this.ROOT.on('value', function(snapshot) {
 
             let ELEMENT = document.querySelector('.comment-num');
@@ -64,6 +62,19 @@ class Database {
                 document.getElementById('comments-main').innerHTML = noComment;
             }
 
+        });
+
+    }
+
+    /**
+     * Display comments.
+     */
+    displayComments () {
+
+        this.ROOT.on('child_added', function (data) {
+            console.log(data.val().name);
+
+            document.getElementById('comments-main').innerHTML += new commentTmp(data.val()).template();
         });
 
     }

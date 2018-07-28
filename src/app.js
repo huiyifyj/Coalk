@@ -57,6 +57,9 @@ class App {
         // Listening comments number event.
         this.database.commentsNum();
 
+        // Display comments.
+        this.database.displayComments();
+
         ROOT_ELEMENT.innerHTML += footer;
 
         /**
