@@ -8,9 +8,6 @@ import footer from './view/footer.html';
 
 import database from './firebase/database';
 
-// Import CSS stylesheet
-import './scss/index.scss';
-
 /**
  * @class App
  */

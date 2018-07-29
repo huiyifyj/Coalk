@@ -27,7 +27,11 @@ module.exports = {
 
     output: {
         path: OUTPUT_PATH,
-        filename: OUTPUT_FILE
+        filename: OUTPUT_FILE,
+        library: 'FYJ',
+        libraryTarget: 'umd',
+        libraryExport: 'default',
+        umdNamedDefine: true
     },
 
     resolve: {
