@@ -1,5 +1,5 @@
 /**
- * **Note**: `firebase` is global namespace
+ * **Note**: `firebase` is global namespace.
  *
  * @class Database
  */
@@ -52,6 +52,8 @@ class Database {
 
     /**
      * Display comments.
+     *
+     * @param {function} f The function that display comments.
      */
     displayComments (f) {
 
