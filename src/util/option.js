@@ -1,3 +1,5 @@
+import escapePath from './escape';
+
 /**
  * Handle your input option.
  * - More to see [README](https://github.com/huiyifyj/comment.js/blob/master/README.md)
@@ -87,6 +89,11 @@ const handleOption = (option) => {
     if (!option.apiKey) {
         throw `\nPlease input apiKey and non-null.`;
     }
+
+    /**
+     * Escape path string contain `/` and index.`html|htm|jsp|php`.
+     */
+    option.path = escapePath(option.path.replace(/index\.(html|htm)/, ''));
 
     return option;
 
