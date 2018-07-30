@@ -1,5 +1,5 @@
 /**
- * Escape and unescape string.
+ * Escape path string.
  *
  * @param {string} input
  * @return {string} The string that is escaped and handled.

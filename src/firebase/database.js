@@ -1,5 +1,7 @@
 /**
- * **Note**: `firebase` is global namespace.
+ * **Note**:
+ * - `firebase` is global namespace.
+ * - Keys must be non-empty strings and can't contain `.`, `#`, `$`, `/`, `[`, or `]`.
  *
  * @class Database
  */
