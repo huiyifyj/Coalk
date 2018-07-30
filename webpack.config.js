@@ -1,5 +1,7 @@
 const path = require('path');
 
+const webpack = require('webpack');
+
 const pkg = require('./package.json');
 
 const ENTRY_FILE = path.resolve(__dirname, 'index.js');
@@ -8,9 +10,9 @@ const OUTPUT_PATH = path.resolve(__dirname, 'dist');
 
 const POSTCSS_CONFIG_FILE = path.resolve(__dirname, 'postcss.config.js');
 
-let OUTPUT_FILE = pkg.name + '.js';
+const OUTPUT_FILE = pkg.name + '.js';
 
-let DEVTOOL = 'cheap-module-source-map';
+const DEVTOOL = 'cheap-module-source-map';
 
 if (process.env.NODE_ENV !== 'development') {
     OUTPUT_FILE = pkg.name + '.min.js';
@@ -107,6 +109,12 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+
+    plugins: [
+        new webpack.DefinePlugin({
+            APP_VERSION: `"${require('./package.json').version}"`
+        })
+    ]
 
 }
