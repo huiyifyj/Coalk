@@ -13,7 +13,7 @@ class Database {
      */
     constructor (option) {
 
-        this.path = option.path;
+        this.option = option;
 
         this.database = firebase.database();
 
@@ -28,12 +28,12 @@ class Database {
      */
     submit (inputObj) {
 
-        this.ROOT.push().set(inputObj, function (error) {
+        this.ROOT.push().set(inputObj, (error) => {
             if (error) {
                 throw error;
             }
             else {
-                console.log('Comment successful')
+                console.log('Comment successful');
             }
         });
 
