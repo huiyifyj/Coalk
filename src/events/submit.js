@@ -30,7 +30,11 @@ export default (database) => {
 
         verify(inputObj).then((bool) => {
             if (bool){
+
+                inputObj['time'] = new Date().getTime();
+
                 database.submit(inputObj);
+
             }
             else {
                 throw 'Correct Name and E-mail.';

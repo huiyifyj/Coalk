@@ -15,9 +15,7 @@ class Comment {
 
         return `<div class="comments-wrap"><div class="comment-body"><img class="avatar-img" src="https://gravatar.loli.net/avatar/${md5(this.commentData.email)}"><div class="comment-box"><div class="username">
         <a href="${this.commentData.url}" target="_blank">
-        ${this.commentData.name}</a></div><div class="comment-time" title="${new Date()}">
-                20 Seconds
-        </div></div><div class="comment-content">${this.commentData.comment}</div></div></div>`;
+        ${this.commentData.name}</a></div><div class="comment-time" title="${this.commentData.time}">20 Seconds</div></div><div class="comment-content">${this.commentData.comment}</div></div></div>`;
 
     }
 
