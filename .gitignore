@@ -9,5 +9,4 @@ package-lock.json
 */.DS_Store
 
 # Others
-config/
 dist/
