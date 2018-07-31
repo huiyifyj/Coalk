@@ -37,7 +37,8 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.js', '.json', '.css', '.scss']
+        modules: ['node_modules'],
+        extensions: ['.js', '.json', '.scss']
     },
 
     // wepack-dev-server config
@@ -113,7 +114,7 @@ module.exports = {
 
     plugins: [
         new webpack.DefinePlugin({
-            APP_VERSION: `"${require('./package.json').version}"`
+            APP_VERSION: `'${require('./package.json').version}'`
         })
     ]
 
