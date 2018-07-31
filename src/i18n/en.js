@@ -5,6 +5,7 @@ module.exports = {
     url: 'http(s)://',
     placeholder: 'Leave your comment',
     submit: 'Comment',
-    comments: 'Comments'
+    comments: 'Comments',
+    loadMore: 'Load More...'
 
 }

@@ -5,6 +5,7 @@ module.exports = {
     url: 'http(s)://',
     placeholder: '留下你的评论',
     submit: '提交',
-    comments: '留言'
+    comments: '留言',
+    loadMore: '加载更多'
 
 }
