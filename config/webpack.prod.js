@@ -39,26 +39,7 @@ module.exports = {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        }),
-        // new webpack.config.optimization.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false,
-        //         // 内嵌定义了但是只用到一次的变量
-        //         collapse_vars: true,
-        //         // 提取出出现多次但是没有定义成变量去引用的静态值
-        //         reduce_vars: true,
-        //         drop_console: true
-        //     },
-        //     sourceMap:false,
-        //     uglifyOptions:{
-        //         output:{
-        //             // 删除所有的注释
-        //             comments: false,
-        //             beautify:false
-        //         },
-        //         safari10:true
-        //     }
-        // })
+        })
     ],
 
     module: {
