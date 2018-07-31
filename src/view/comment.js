@@ -6,6 +6,10 @@ import time from '../util/time';
  */
 class Comment {
 
+    /**
+     * @param {object} commentData The data object comment.
+     * @constructor
+     */
     constructor (commentData) {
 
         this.commentData = commentData;
@@ -17,6 +21,9 @@ class Comment {
 
     }
 
+    /**
+     * @return {string} The comment template string.
+     */
     template () {
 
         return `<div class="comments-wrap"><div class="comment-body"><img class="avatar-img" src="${this.cdn}${md5(this.commentData.email)}"><div class="comment-box"><div class="username">
