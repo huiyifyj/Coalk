@@ -17,9 +17,16 @@ class Database {
 
         this.option = option;
 
-        this.database = firebase.database();
+        this.ROOT = firebase.database().ref('/' + this.option.path);
 
-        this.ROOT = this.database.ref('/');
+    }
+
+    /**
+     * Judging whether the database has existed current path name.
+     */
+    havePath () {
+
+        // this.database
 
     }
 

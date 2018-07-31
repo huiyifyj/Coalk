@@ -12,7 +12,7 @@ export default {
      */
     intervalTime: (time) => {
 
-        let POST_TIME = time.getTime();
+        let POST_TIME = time;
         let NOW_TIME = new Date().getTime();
 
         let INTERVAL_TIME = NOW_TIME - POST_TIME;
@@ -47,25 +47,28 @@ export default {
         if (days < 8) {
             return days + ' 天前';
         } else {
-            return formatData(time);
+            // return formatData(time);
+            return 'Long';
         }
 
+    },
+
+    /**
+     * Format The Date.
+     *
+     * @param {Date} time - The comment posted time
+     * @returns {String} Generat format time
+     */
+    formatData: (time) => {
+
+        let DAY = time.getDate();
+        let MONTH = time.getMonth() + 1;
+        let YEAR = time.getFullYear();
+        let HOUR = time.getHours();
+        let MINUTE = time.getMinutes();
+    
+        return `${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}`;
+    
     }
-
-}
-
-/**
- * Format The Date.
- *
- * @param {Date} time - The comment posted time
- * @returns {String} Generat format time
- */
-const formatData = (time) => {
-
-    let DAY = time.getDate();
-    let MONTH = time.getMonth() + 1;
-    let YEAR = time.getFullYear();
-
-    return `${YEAR}-${MONTH}-${DAY}`;
 
 }
