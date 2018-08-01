@@ -31,7 +31,7 @@ export default (database) => {
             if (bool){
                 inputObj['time'] = new Date().getTime();
 
-                database.submit(inputObj);
+                database.submitComment(inputObj);
             } else {
                 throw 'Wrong name and e-mail';
             }

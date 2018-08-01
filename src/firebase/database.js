@@ -35,9 +35,9 @@ class Database {
      *
      * @param {object} inputObj Your comment data object.
      */
-    submit (inputObj) {
+    submitComment (inputObj) {
 
-        this.ROOT.push().set(inputObj)
+        this.ROOT.push(inputObj)
             .then(() => {
                 console.log('Comment succeeded');
             })

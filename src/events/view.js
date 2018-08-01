@@ -10,8 +10,7 @@ export default {
 
         if (snapshot.val()) {
             ELEMENT.innerText = snapshot.numChildren();
-        }
-        else {
+        } else {
             ELEMENT.innerText = 'No';
 
             document.getElementById('comments-main').innerHTML = noComment;
