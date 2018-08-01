@@ -18,34 +18,27 @@ export default (database) => {
     let inputObj = {};
 
     for (let i = 0; i < inputIds.length; i++) {
-
         let inputId = inputIds[i];
-
         let inputName = document.getElementById(inputId).name;
         let inputValue = document.getElementById(inputId).value;
 
         inputObj[inputName] = inputValue;
-
     }
 
     if (checkInput(inputObj)) {
 
         verify(inputObj).then((bool) => {
             if (bool){
-
                 inputObj['time'] = new Date().getTime();
 
                 database.submit(inputObj);
-
-            }
-            else {
-                throw 'Correct Name and E-mail.';
+            } else {
+                throw 'Wrong name and e-mail';
             }
         });
 
-    }
-    else {
-        throw 'Please Enter the Correct Text Format.';
+    } else {
+        throw 'Enter Text Format error.';
     }
 
 }
@@ -60,10 +53,8 @@ const checkInput = (data) => {
 
     const urlReg = /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
 
-    if (data.name && data.email && data.comment && urlReg.test(data.url)) {
-        return true;
-    } else {
-        return false;
-    }
+    return (data.name && data.email && data.comment && urlReg.test(data.url)) ?
+        true :
+        false;
 
 }
