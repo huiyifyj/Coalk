@@ -1,10 +1,12 @@
 import handleOption from './util/option';
 
 import submit from './events/submit';
-import view from './events/view';
+
+import commentTmp from './view/comment';
 
 import input from './view/input.html';
 import footer from './view/footer.html';
+import noComment from './view/noComment.html';
 
 import database from './firebase/database';
 
@@ -51,20 +53,45 @@ class App {
         const ROOT_ELEMENT = this.option.container;
 
         ROOT_ELEMENT.innerHTML += input;
-
-        // Listening comments number event.
-        this.database.commentsNum(view.displayCommentsNum);
-
-        // Display comments.
-        this.database.displayComments(view.displayCommentsView);
-
         ROOT_ELEMENT.innerHTML += footer;
+
+        this.listen();
+
+    }
+
+    listen () {
 
         /**
          * Attach submit event to button that id is `submit-comment`.
          */
         document.getElementById('submit-comment').addEventListener('click', () => {
             submit(this.database);
+        });
+
+        /**
+         * Listening comments number event.
+         */
+        this.database.commentsNum((snapshot) => {
+
+            let ELEMENT = document.querySelector('.comment-num');
+
+            if (snapshot.val()) {
+                ELEMENT.innerText = snapshot.numChildren();
+            } else {
+                ELEMENT.innerText = 'No';
+
+                document.getElementById('comments-main').innerHTML = noComment;
+            }
+
+        });
+
+        /**
+         * Display comments.
+         */
+        this.database.displayComments((data) => {
+
+            document.getElementById('comments-main').innerHTML += new commentTmp(data.val()).template();
+
         });
 
     }
