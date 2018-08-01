@@ -24,10 +24,8 @@ class Database {
     /**
      * Judging whether the database has existed current path name.
      */
-    havePath () {
-
-        // this.database
-
+    getNum () {
+        //
     }
 
     /**

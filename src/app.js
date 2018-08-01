@@ -50,10 +50,9 @@ class App {
      */
     initView () {
 
-        const ROOT_ELEMENT = this.option.container;
+        const ROOT = this.option.container;
 
-        ROOT_ELEMENT.innerHTML += input;
-        ROOT_ELEMENT.innerHTML += footer;
+        ROOT.innerHTML += input + footer;
 
         this.listen();
 
@@ -73,12 +72,12 @@ class App {
          */
         this.database.commentsNum((snapshot) => {
 
-            let ELEMENT = document.querySelector('.comment-num');
+            let NUM = document.querySelector('.comment-num');
 
             if (snapshot.val()) {
-                ELEMENT.innerText = snapshot.numChildren();
+                NUM.innerText = snapshot.numChildren();
             } else {
-                ELEMENT.innerText = 'No';
+                NUM.innerText = 'No';
 
                 document.getElementById('comments-main').innerHTML = noComment;
             }
