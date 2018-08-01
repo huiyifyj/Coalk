@@ -37,14 +37,13 @@ class Database {
      */
     submit (inputObj) {
 
-        this.ROOT.push().set(inputObj, (error) => {
-            if (error) {
+        this.ROOT.push().set(inputObj)
+            .then(() => {
+                console.log('Comment succeeded');
+            })
+            .catch((error) => {
                 throw error;
-            }
-            else {
-                console.log('Comment successful');
-            }
-        });
+            });
 
     }
 
