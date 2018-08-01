@@ -8,7 +8,7 @@ import verify from './verify';
 export default (database) => {
 
     /**
-     * @type {Array} All id property input tag.
+     * @type {string[]} All id property input tag.
      */
     const inputIds = ['fyj-name', 'fyj-email', 'fyj-url', 'fyj-content'];
 

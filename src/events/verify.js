@@ -5,8 +5,8 @@ import md5 from '../util/md5';
  * And verify its Authenticity.
  * Use [Official CDN](https://cn.gravatar.com/avatar/) provide JSON API.
  *
- * @param {object} data The JSON data object, including name, emailhash property.
- * @return {Promise} Promise: resolve a boolean value.
+ * @param {object} data The JSON data object, including name, email property.
+ * @return {Promise} Promise, .then()
  */
 export default (data) => {
 
@@ -17,25 +17,18 @@ export default (data) => {
      */
     const CDN = 'https://en.gravatar.com/';
 
-    /**
-     * @type {Promise}
-     */
-    const promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
         const xhr = new XMLHttpRequest();
 
         xhr.open('GET', CDN + emailHash + '.json', true);
 
         xhr.onload = function () {
-
             if (this.status === 200) {
-                const boolean = verify(this.response, data, emailHash);
-                resolve(boolean);
-            }
-            else {
+                resolve(verify(this.response, data, emailHash));
+            } else {
                 reject(new Error(this.statusText));
             }
-
         };
 
         xhr.responseType = 'json';
@@ -44,8 +37,6 @@ export default (data) => {
 
     });
 
-    return promise;
-
 }
 
 /**
@@ -53,6 +44,7 @@ export default (data) => {
  *
  * @param {object} response Get JSON object by XMLHttpRequest.
  * @param {object} data Data to be verified. Note: the data include name and emailHash two property.
+ * @param {string} emailHash A string that is convert to a hash from email.
  * @return {boolean}
  */
 const verify = (response, data, emailHash) => {
@@ -60,11 +52,8 @@ const verify = (response, data, emailHash) => {
     const name = response.entry[0].displayName;
     const hash = response.entry[0].hash;
 
-    if (name == data.name && hash == emailHash) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (name == data.name && hash == emailHash) ?
+        true :
+        false;
 
 }
