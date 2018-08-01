@@ -1,7 +1,5 @@
 import verify from './verify';
 
-import database from '../firebase/database';
-
 /**
  * Bind submit comment data event to button that id is `submit-comment`.
  *
@@ -9,10 +7,14 @@ import database from '../firebase/database';
  */
 export default (database) => {
 
-    // All id property input tag.
+    /**
+     * @type {Array} All id property input tag.
+     */
     const inputIds = ['fyj-name', 'fyj-email', 'fyj-url', 'fyj-content'];
 
-    // A object container all input data.
+    /**
+     * @type {object} A object container all input data.
+     */
     let inputObj = {};
 
     for (let i = 0; i < inputIds.length; i++) {

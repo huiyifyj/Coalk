@@ -13,10 +13,13 @@ export default (data) => {
     const emailHash = md5(data.email);
 
     /**
-     * @type {string}
+     * @type {string} Official gravatar CDN link.
      */
     const CDN = 'https://en.gravatar.com/';
 
+    /**
+     * @type {Promise}
+     */
     const promise = new Promise((resolve, reject) => {
 
         const xhr = new XMLHttpRequest();
