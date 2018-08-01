@@ -22,13 +22,6 @@ class Database {
     }
 
     /**
-     * Judging whether the database has existed current path name.
-     */
-    getNum () {
-        //
-    }
-
-    /**
      * Submit your comment data object to firebase.
      *
      * @param {object} inputObj Your comment data object.
