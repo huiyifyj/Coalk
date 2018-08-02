@@ -1,5 +1,3 @@
-import langSetting from '../i18n/lang'
-
 /**
  * Handle time and date.
  */
@@ -10,22 +8,19 @@ export default {
      * And return a string mark interval.
      *
      * @param {Date} time The comment posted time.
-     * @param {string} lang The language setting.
+     * @param {object} langTime The object for time language setting.
      * @returns {String} Generat interval time.
      */
-    intervalTime: (time, lang) => {
+    intervalTime: (time, langTime) => {
 
-        const langTime = langSetting(lang).time;
+        const NOW = new Date();
 
-        let POST_TIME = time;
-        let NOW_TIME = new Date().getTime();
+        let PERIOD = NOW - time;
 
-        let INTERVAL_TIME = NOW_TIME - POST_TIME;
-
-        var days = Math.floor(INTERVAL_TIME / (24 * 3600 * 1000));
+        var days = Math.floor(PERIOD / (24 * 3600 * 1000));
         if (days === 0) {
 
-            var leave1 = INTERVAL_TIME % (24 * 3600 * 1000);
+            var leave1 = PERIOD % (24 * 3600 * 1000);
             var hours = Math.floor(leave1 / (3600 * 1000));
 
             if (hours === 0) {
