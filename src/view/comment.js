@@ -10,18 +10,17 @@ class Comment {
 
     /**
      * @param {object} commentData The data object comment.
-     * @param {string} lang The language setting.
+     * @param {object} option The app option setting.
      * @constructor
      */
-    constructor (commentData, lang) {
+    constructor (commentData, option) {
 
         this.commentData = commentData;
+        this.cdn = option.cdn;
 
         this.Date = new Date(this.commentData.time);
 
-        this.cdn = 'https://gravatar.loli.net/avatar/';
-
-        this.periodTime = periodTime(this.Date, language(lang).time);
+        this.periodTime = periodTime(this.Date, language(option.language).time);
         // this.formatData = time.formatData(new Date(this.commentData.time));
 
     }

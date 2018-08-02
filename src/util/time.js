@@ -10,7 +10,7 @@ const periodTime = (time, languageTime) => {
 
     const PERIOD = new Date() - time;
 
-    console.log(new Date("2018-07-23 00:00:00").getTime())
+    // console.log(new Date("2018-07-23 00:00:00").getTime())
 
     const DAY = Math.floor(PERIOD / (24 * 3600 * 1000));
 

@@ -89,7 +89,7 @@ class App {
          */
         this.database.displayComments((data) => {
 
-            document.getElementById('comments-main').innerHTML += new commentTmp(data.val(), this.option.language).template();
+            document.getElementById('comments-main').innerHTML += new commentTmp(data.val(), this.option).template();
 
         });
 
