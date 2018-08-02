@@ -1,3 +1,5 @@
+import langSetting from '../i18n/lang'
+
 /**
  * Handle time and date.
  */
@@ -7,10 +9,13 @@ export default {
      * Calculate the interval between comments posted and now.
      * And return a string mark interval.
      *
-     * @param {Date} time - The comment posted time.
+     * @param {Date} time The comment posted time.
+     * @param {string} lang The language setting.
      * @returns {String} Generat interval time.
      */
-    intervalTime: (time) => {
+    intervalTime: (time, lang) => {
+
+        const langTime = langSetting(lang).time;
 
         let POST_TIME = time;
         let NOW_TIME = new Date().getTime();
@@ -33,19 +38,19 @@ export default {
                     var leave3 = leave2 % (60 * 1000);
                     var seconds = Math.round(leave3 / 1000);
 
-                    return seconds + ' 秒前';
+                    return seconds + langTime.second;
                 }
-                return minutes + ' 分钟前';
+                return minutes + langTime.minute;
             }
-            return hours + ' 小时前';
+            return hours + langTime.hour;
         }
         
         if (days < 0) {
-            return '刚刚';
+            return langTime.now;
         }
 
         if (days < 8) {
-            return days + ' 天前';
+            return days + langTime.day;
         } else {
             // return formatData(time);
             return 'Long';
