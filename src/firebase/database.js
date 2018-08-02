@@ -8,8 +8,6 @@
 class Database {
 
     /**
-     * Constructor Function
-     *
      * @param {object} option The option that is handled from app.js file.
      * @constructor
      */

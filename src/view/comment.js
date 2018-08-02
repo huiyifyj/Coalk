@@ -17,8 +17,8 @@ class Comment {
         this.cdn = 'https://gravatar.loli.net/avatar/';
 
         this.intervalTime = time.intervalTime(this.commentData.time);
-        // this.formatData = time.formatData(new Date(this.commentData.time));
-        this.formatData = new Date(this.commentData.time)
+        this.formatData = time.formatData(new Date(this.commentData.time));
+        // this.formatData = new Date(this.commentData.time);
 
     }
 

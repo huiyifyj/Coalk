@@ -2,7 +2,7 @@ import escapePath from './escape';
 
 /**
  * Handle your input option.
- * - More to see [README](https://github.com/huiyifyj/comment.js/blob/master/README.md)
+ * - More to see [README](https://github.com/huiyifyj/comment.js/blob/master/README.md).
  *
  * @param {object} option Your custom option for initializating app configuration.
  * @return {object} Option that be handled.

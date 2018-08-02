@@ -1,5 +1,5 @@
 /**
- * Handle time
+ * Handle time and date.
  */
 export default {
 
@@ -56,19 +56,13 @@ export default {
     /**
      * Format The Date.
      *
-     * @param {Date} time - The comment posted time
-     * @returns {String} Generat format time
+     * @param {Date} time The comment posted time.
+     * @returns {String} Generat format time.
      */
     formatData: (time) => {
 
-        let DAY = time.getDate();
-        let MONTH = time.getMonth() + 1;
-        let YEAR = time.getFullYear();
-        let HOUR = time.getHours();
-        let MINUTE = time.getMinutes();
-    
-        return `${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}`;
-    
+        return `${time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes()}`;
+
     }
 
 }

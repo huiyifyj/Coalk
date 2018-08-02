@@ -97,7 +97,7 @@ const bitRotateLeft = (num, cnt) => {
 /**
  * These functions implement the four basic operations the algorithm uses.
  *
- * @param {number} `All Param`
+ * @param {number} `All Param`.
  * @return {number} The result that is realized by algorithm.
  */
 const md5cmn = (q, a, b, x, s, t) => {

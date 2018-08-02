@@ -6,7 +6,7 @@ import md5 from '../util/md5';
  * Use [Official CDN](https://cn.gravatar.com/avatar/) provide JSON API.
  *
  * @param {object} data The JSON data object, including name, email property.
- * @return {Promise} Promise, .then()
+ * @return {Promise} Promise, .then() a boolean param.
  */
 export default (data) => {
 
