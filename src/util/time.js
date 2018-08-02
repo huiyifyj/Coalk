@@ -21,46 +21,31 @@ const periodTime = (time, languageTime) => {
     } else if (DAY >=30 && DAY < 365) {
         return Math.floor(DAY / 30) + languageTime.month;
     } else if (DAY === 0) {
-        //
+        const residue1 = PERIOD % (24 * 3600 * 1000);
+        const HOUR = Math.floor(residue1 / (3600 * 1000));
+
+        if (HOUR === 0) {
+            const residue2 = residue1 % (3600 * 1000);
+            const MINUTE = Math.floor(residue2 / (60 * 1000));
+
+            if (MINUTE === 0) {
+                const residue3 = residue2 % (60 * 1000);
+                const SECOND = Math.round(residue3 / 1000);
+
+                return SECOND + languageTime.second;
+            } else {
+                return MINUTE + languageTime.minute;
+            }
+
+        } else {
+            return HOUR + languageTime.hour;
+        }
+
     } else if (DAY >= 365) {
         return Math.floor(DAY / 365) + languageTime.year;
     } else {
         return languageTime.now;
     }
-
-    // var days = Math.floor(PERIOD / (24 * 3600 * 1000));
-    // if (days === 0) {
-
-    //     var leave1 = PERIOD % (24 * 3600 * 1000);
-    //     var hours = Math.floor(leave1 / (3600 * 1000));
-
-    //     if (hours === 0) {
-
-    //         var leave2 = leave1 % (3600 * 1000);
-    //         var minutes = Math.floor(leave2 / (60 * 1000));
-
-    //         if (minutes === 0) {
-
-    //             var leave3 = leave2 % (60 * 1000);
-    //             var seconds = Math.round(leave3 / 1000);
-
-    //             return seconds + langTime.second;
-    //         }
-    //         return minutes + langTime.minute;
-    //     }
-    //     return hours + langTime.hour;
-    // }
-    
-    // if (days < 0) {
-    //     return langTime.now;
-    // }
-
-    // if (days < 8) {
-    //     return days + langTime.day;
-    // } else {
-    //     // return formatData(time);
-    //     return 'Long';
-    // }
 
 }
 
