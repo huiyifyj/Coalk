@@ -9,9 +9,6 @@
 const periodTime = (time, languageTime) => {
 
     const PERIOD = new Date() - time;
-
-    // console.log(new Date("2018-08-03 11:00:00").getTime())
-
     const DAY = Math.floor(PERIOD / (24 * 3600 * 1000));
 
     if (DAY > 0 && DAY < 7) {
