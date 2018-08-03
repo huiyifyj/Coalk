@@ -29,11 +29,6 @@ class Database {
         this.ROOT.push(inputObj)
             .then(() => {
                 console.log('Comment succeeded');
-
-                // Remove value when comment succeeded.
-                for(var key in inputObj){
-                    document.getElementById('fyj-' + key).value = '';
-                }
             })
             .catch((error) => {
                 throw error;
@@ -60,14 +55,21 @@ class Database {
 
     }
 
+    // desc是descend 降序意思 
+    // asc 是ascend 升序意思
+
     /**
      * Display comments.
+     * Sort by ascending order of time.
      *
      * @param {function} f The callback function that display comments.
      */
-    displayComments (f) {
+    ascComments (f) {
 
-        this.ROOT.on('child_added', f);
+        this.ROOT
+            .orderByChild('time')
+            .limitToLast(4)
+            .on('child_added', f);
 
     }
 

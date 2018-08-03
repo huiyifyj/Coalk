@@ -85,7 +85,7 @@ class App {
         /**
          * Display comments.
          */
-        this.database.displayComments((snapshot) => {
+        this.database.ascComments((snapshot) => {
 
             document.getElementById('comments-main').innerHTML += new commentTmp(snapshot.val(), this.option).template();
 

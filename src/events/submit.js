@@ -10,7 +10,7 @@ export default (database) => {
     /**
      * @type {string[]} All id property input tag.
      */
-    const inputIds = ['fyj-name', 'fyj-email', 'fyj-url', 'fyj-content'];
+    const inputIds = ['fyj-name', 'fyj-email', 'fyj-url', 'fyj-comment'];
 
     /**
      * @type {object} A object container all input data.
@@ -36,6 +36,11 @@ export default (database) => {
                 inputObj['time'] = new Date().getTime();
 
                 database.submitComment(inputObj);
+
+                // Remove value when comment succeeded.
+                // for(var key in inputObj){
+                //     document.getElementById('fyj-' + key).value = '';
+                // }
             } else {
                 throw 'Wrong name and e-mail';
             }
