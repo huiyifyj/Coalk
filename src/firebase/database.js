@@ -14,7 +14,6 @@ class Database {
     constructor (option) {
 
         this.option = option;
-
         this.row = option.row;
 
         this.ROOT = firebase.database().ref('/' + this.option.path);
@@ -67,8 +66,8 @@ class Database {
 
         this.ROOT
             .orderByChild('time')
-            .limitToLast(8)
-            .once('child_added', f);
+            .limitToLast(this.row)
+            .on('child_added', f);
 
     }
 
@@ -82,7 +81,7 @@ class Database {
 
         this.ROOT
             .orderByChild('time')
-            .limitToFirst(8)
+            .limitToFirst(this.row)
             .on('child_added', f);
 
     }
