@@ -10,7 +10,7 @@ const periodTime = (time, languageTime) => {
 
     const PERIOD = new Date() - time;
 
-    // console.log(new Date("2018-07-23 00:00:00").getTime())
+    // console.log(new Date("2018-08-03 11:00:00").getTime())
 
     const DAY = Math.floor(PERIOD / (24 * 3600 * 1000));
 
@@ -32,7 +32,9 @@ const periodTime = (time, languageTime) => {
                 const residue3 = residue2 % (60 * 1000);
                 const SECOND = Math.round(residue3 / 1000);
 
-                return SECOND + languageTime.second;
+                return (SECOND > 5) ?
+                    SECOND + languageTime.second :
+                    languageTime.now;
             } else {
                 return MINUTE + languageTime.minute;
             }
