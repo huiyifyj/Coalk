@@ -68,28 +68,26 @@ class App {
         });
 
         /**
-         * Listening comments number event.
+         * Get comments number and add noComment.html when no comment.
          */
-        this.database.commentsNum((snapshot) => {
+        this.database.commentsNum()
+            .then((num) => {
+                document.querySelector('.comment-num').innerText = (num) ? num : 'No';
 
-            let NUM = document.querySelector('.comment-num');
-
-            if (snapshot.val()) {
-                NUM.innerText = snapshot.numChildren();
-            } else {
-                NUM.innerText = 'No';
-
-                document.getElementById('comments-main').innerHTML = noComment;
-            }
-
-        });
+                while (!num) {
+                    document.getElementById('comments-main').innerHTML = noComment;
+                }
+            })
+            .catch((error) => {
+                throw error;
+            });
 
         /**
          * Display comments.
          */
-        this.database.displayComments((data) => {
+        this.database.displayComments((snapshot) => {
 
-            document.getElementById('comments-main').innerHTML += new commentTmp(data.val(), this.option).template();
+            document.getElementById('comments-main').innerHTML += new commentTmp(snapshot.val(), this.option).template();
 
         });
 

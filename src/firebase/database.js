@@ -42,20 +42,28 @@ class Database {
     }
 
     /**
-     * Get comments number totally and listening it.
+     * Get the comments number of this current page.
      *
-     * @param {function} f The function that display comments number.
+     * @return {Promise}
      */
-    commentsNum (f) {
+    commentsNum () {
 
-        this.ROOT.on('value', f);
+        return new Promise((resolve, reject) => {
+            try {
+                this.ROOT.once('value', (snapshot) => {
+                    resolve(snapshot.numChildren());
+                });
+            } catch (error) {
+                reject(error);
+            }
+        });
 
     }
 
     /**
      * Display comments.
      *
-     * @param {function} f The function that display comments.
+     * @param {function} f The callback function that display comments.
      */
     displayComments (f) {
 
