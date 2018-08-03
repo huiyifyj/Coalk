@@ -67,8 +67,8 @@ class Database {
     ascComments (f) {
 
         this.ROOT
-            .orderByChild('time')
-            .limitToLast(4)
+            // .orderByChild('time')
+            .limitToLast(8)
             .on('child_added', f);
 
     }

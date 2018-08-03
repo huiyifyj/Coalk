@@ -15,19 +15,17 @@ const handleOption = (option) => {
     const DEFAULT_OPTION = {
 
         /**
-         * The HTMLDivElement to accommodate Comment System.
-         * @type {HTMLDivElement}
+         * @type {HTMLDivElement} HTMLDivElement accommodate Comment System.
          */
         container: document.getElementById('fyj'),
 
         /**
-         * Gravatar CDN
          * Default cdn is https://gravatar.loli.net/avatar/
          * You also can use:
          * - [Official CDN](https://cn.gravatar.com/avatar/)
          * - https://gravatar.cat.net/avatar/
          * - https://cdn.v2ex.com/gravatar/
-         * @type {string}
+         * @type {string} Gravatar CDN.
          */
         cdn: 'https://gravatar.loli.net/avatar/',
 
@@ -39,14 +37,12 @@ const handleOption = (option) => {
         language: (navigator.language || navigator.browserLanguage).toLowerCase(),
 
         /**
-         * Firebase app initializating configuration.
-         * @type {string}
+         * @type {string} Firebase app initializating configuration.
          */
         apiKey: '',
 
         /**
-         * Firebase database initializating configuration.
-         * @type {string}
+         * @type {string} Firebase database initializating configuration.
          */
         databaseURL: '',
 
@@ -58,8 +54,7 @@ const handleOption = (option) => {
         domain: option.domain || window.location.hostname,
 
         /**
-         * The index of comments database.
-         * @type {string}
+         * @type {string} The index of comments database.
          */
         path: window.location.pathname
 

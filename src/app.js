@@ -2,11 +2,10 @@ import handleOption from './util/option';
 
 import submit from './events/submit';
 
-import commentTmp from './view/comment';
-
 import input from './view/input.html';
 import footer from './view/footer.html';
 import noComment from './view/noComment.html';
+import commentTmp from './view/comment';
 
 import database from './firebase/database';
 
@@ -52,7 +51,7 @@ class App {
 
         const ROOT = this.option.container;
 
-        ROOT.innerHTML += input + footer;
+        ROOT.innerHTML = input + footer;
 
         this.listen();
 
