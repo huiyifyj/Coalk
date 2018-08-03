@@ -30,6 +30,11 @@ const handleOption = (option) => {
         cdn: 'https://gravatar.loli.net/avatar/',
 
         /**
+         * @type {number} Display the comments of maxi-number.
+         */
+        row: 8,
+
+        /**
          * - Language setting for i18n.
          * - Default value is your local language according to you browser.
          * @type {string}
@@ -83,6 +88,14 @@ const handleOption = (option) => {
      */
     if (!option.apiKey) {
         throw `\nPlease input apiKey and non-null.`;
+    }
+
+    /**
+     * Make sure the comments number is greater than 0.
+     * @throws {error}
+     */
+    if (option.row <= 0) {
+        throw `\nMake sure the comments number is greater than 0.`;
     }
 
     /**

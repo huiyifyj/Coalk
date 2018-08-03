@@ -75,6 +75,8 @@ class App {
 
                 if (!num) {
                     document.getElementById('comments-main').innerHTML = noComment;
+                } else if (num <= this.option.row) {
+                    document.getElementById('load-more').remove();
                 }
             })
             .catch((error) => {
@@ -82,7 +84,7 @@ class App {
             });
 
         /**
-         * Display comments.
+         * Display comments by 'time' ASC.
          */
         this.database.ascComments((snapshot) => {
 

@@ -15,6 +15,8 @@ class Database {
 
         this.option = option;
 
+        this.row = option.row;
+
         this.ROOT = firebase.database().ref('/' + this.option.path);
 
     }
@@ -55,11 +57,8 @@ class Database {
 
     }
 
-    // desc是descend 降序意思 
-    // asc 是ascend 升序意思
-
     /**
-     * Display comments.
+     * Display comments by ASC.
      * Sort by ascending order of time.
      *
      * @param {function} f The callback function that display comments.
@@ -67,8 +66,23 @@ class Database {
     ascComments (f) {
 
         this.ROOT
-            // .orderByChild('time')
+            .orderByChild('time')
             .limitToLast(8)
+            .once('child_added', f);
+
+    }
+
+    /**
+     * Display comments by DESC.
+     * Sort by descending order of time.
+     *
+     * @param {function} f The callback function that display comments.
+     */
+    descComments (f) {
+
+        this.ROOT
+            .orderByChild('time')
+            .limitToFirst(8)
             .on('child_added', f);
 
     }
