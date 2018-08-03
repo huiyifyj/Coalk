@@ -74,7 +74,7 @@ class App {
             .then((num) => {
                 document.querySelector('.comment-num').innerText = (num) ? num : 'No';
 
-                while (!num) {
+                if (!num) {
                     document.getElementById('comments-main').innerHTML = noComment;
                 }
             })
