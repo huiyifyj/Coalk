@@ -62,7 +62,7 @@ class Database {
      *
      * @param {function} f The callback function that display comments.
      */
-    ascComments (f) {
+    commentsByASC (f) {
 
         this.ROOT
             .orderByChild('time')
@@ -77,7 +77,7 @@ class Database {
      *
      * @param {function} f The callback function that display comments.
      */
-    descComments (f) {
+    commentsByDESC (f) {
 
         this.ROOT
             .orderByChild('time')

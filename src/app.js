@@ -31,7 +31,7 @@ class App {
     }
 
     /**
-     * Note: 'firebase' is global namespace
+     * Note: `firebase` is global namespace
      * Initialize firebase app by apiKey and databaseURL.
      * - See [firebase document](https://firebase.google.com/docs/web/setup).
      */
@@ -86,7 +86,7 @@ class App {
         /**
          * Display comments by 'time' ASC.
          */
-        this.database.ascComments((snapshot) => {
+        this.database.commentsByASC((snapshot, pre) => {
 
             document.getElementById('comments-main').innerHTML += new commentTmp(snapshot.val(), this.option).template();
 
