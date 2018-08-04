@@ -1,6 +1,7 @@
 import handleOption from './util/option';
 
 import submit from './events/submit';
+import load from './events/load';
 
 import input from './view/input.html';
 import footer from './view/footer.html';
@@ -55,17 +56,11 @@ class App {
         ROOT.innerHTML = input + footer;
 
         this.controller();
+        this.listener();
 
     }
 
     controller () {
-
-        /**
-         * Attach submit event to button that id is `submit-comment`.
-         */
-        document.getElementById('submit-comment').addEventListener('click', () => {
-            submit(this.database);
-        });
 
         /**
          * Get comments number and add noComment.html when no comment.
@@ -96,6 +91,24 @@ class App {
             .catch((error) => {
                 throw error;
             });
+    }
+
+    listener () {
+
+        /**
+         * Attach submit event to button that id is `submit-comment`.
+         */
+        document.getElementById('submit-comment').addEventListener('click', () => {
+            submit(this.database);
+        });
+
+        /**
+         * Attach load other comment event to button that id is `load-more`.
+         */
+        (document.getElementById('load-more')) ?
+            load() :
+            null;
+
     }
 
 }
