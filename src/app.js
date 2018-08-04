@@ -86,7 +86,7 @@ class App {
         /**
          * Display comments by 'time' ASC.
          */
-        this.database.commentsByASC((snapshot, pre) => {
+        this.database.commentsByASC((snapshot) => {
 
             document.getElementById('comments-main').innerHTML += new commentTmp(snapshot.val(), this.option).template();
 
