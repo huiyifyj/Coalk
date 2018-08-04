@@ -1,7 +1,7 @@
 import md5 from '../util/md5';
 import periodTime from '../util/time';
 
-import language from '../i18n/lang';
+import languageObj from '../i18n/lang';
 
 /**
  * @class Comment
@@ -9,30 +9,31 @@ import language from '../i18n/lang';
 class Comment {
 
     /**
-     * @param {object} commentData The data object comment.
      * @param {object} option The app option setting.
      * @constructor
      */
-    constructor (commentData, option) {
+    constructor (option) {
 
-        this.commentData = commentData;
         this.cdn = option.cdn;
 
-        this.Date = new Date(this.commentData.time);
-
-        this.periodTime = periodTime(this.Date, language(option.language).time);
+        this.languageTime = languageObj(this.language).time;
+        
         // this.formatData = time.formatData(new Date(this.commentData.time));
 
     }
 
     /**
+     * Create comment template.
+     *
+     * @param {object} commentData The data object comment.
      * @return {string} The comment template string.
      */
-    template () {
+    template (commentData) {
+        const date = new Date(commentData.time);
 
-        return `<div class="comments-wrap"><div class="comment-body"><img class="avatar-img" src="${this.cdn + md5(this.commentData.email)}"><div class="comment-box"><div class="username">
-        <a href="${this.commentData.url}" target="_blank">
-        ${this.commentData.name}</a></div><div class="comment-time" title="${this.Date}">${this.periodTime}</div></div><div class="comment-content">${this.commentData.comment}</div></div></div>`;
+        return `<div class="comments-wrap"><div class="comment-body"><img class="avatar-img" src="${this.cdn + md5(commentData.email)}"><div class="comment-box"><div class="username">
+        <a href="${commentData.url}" target="_blank">
+        ${commentData.name}</a></div><div class="comment-time" title="${date}">${periodTime(date, this.languageTime)}</div></div><div class="comment-content">${commentData.comment}</div></div></div>`;
 
     }
 

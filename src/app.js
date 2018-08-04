@@ -25,6 +25,7 @@ class App {
         this.initFirebase();
 
         this.database = new database(this.option);
+        this.commentTmp = new commentTmp(this.option);
 
         this.initView();
 
@@ -86,15 +87,12 @@ class App {
         /**
          * Display comments by 'time' ASC.
          */
-        window.TEST = [];
         this.database.commentsByASC((snapshot) => {
 
-            // document.getElementById('comments-main').innerHTML += new commentTmp(snapshot.val(), this.option).template();
-            window.TEST.push(snapshot.val());
+            document.getElementById('comments-main').innerHTML += this.commentTmp.template(snapshot.val());
             
 
         });
-console.log(window.TEST)
         // this.database.test().then((snapshot) => {
         //     const a = [];
         //     snapshot.forEach(snapshotChild => {
