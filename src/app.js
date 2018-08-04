@@ -87,28 +87,15 @@ class App {
         /**
          * Display comments by 'time' ASC.
          */
-        // this.database.commentsByASC((snapshot) => {
-
-        //     document.getElementById('comments-main').innerHTML += this.commentTmp.template(snapshot.val());
-
-        // });
-
-        // this.database.test().then((snapshot) => {
-        //     const a = [];
-        //     snapshot.forEach(snapshotChild => {
-        //         // console.log(snapshotChild.val())
-        //         a.push(snapshotChild.val())
-        //     });
-        //     a.reverse();
-        //     for (let i = 0; i < a.length; i++) {
-        //         document.getElementById('comments-main').innerHTML += new commentTmp(a[i], this.option).template();
-        //     }
-        // })
-        this.database.test().then((arr) => {
-            for (let i = 0; i < arr.length; i++) {
-                document.getElementById('comments-main').innerHTML += this.commentTmp.template(arr[i]);
-            }
-        });
+        this.database.commentsByASC()
+            .then((arr) => {
+                for (let i = 0; i < arr.length; i++) {
+                    document.getElementById('comments-main').innerHTML += this.commentTmp.template(arr[i]);
+                }
+            })
+            .catch((error) => {
+                throw error;
+            });
     }
 
 }

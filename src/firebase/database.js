@@ -46,9 +46,10 @@ class Database {
 
         return new Promise((resolve, reject) => {
             try {
-                this.ROOT.once('value', (snapshot) => {
-                    resolve(snapshot.numChildren());
-                });
+                this.ROOT.once('value')
+                    .then((snapshot) => {
+                        resolve(snapshot.numChildren());
+                    });
             } catch (error) {
                 reject(error);
             }
@@ -64,15 +65,6 @@ class Database {
      */
     commentsByASC (f) {
 
-        this.ROOT
-            .orderByChild('time')
-            .limitToLast(this.row)
-            .on('child_added', f);
-
-    }
-
-    test () {
-
         return new Promise((resolve, reject) => {
             try {
                 this.ROOT
@@ -80,7 +72,7 @@ class Database {
                     .limitToLast(this.row)
                     .once('value')
                     .then((snapshot) => {
-                        const arr = [];
+                        let arr = [];
 
                         snapshot.forEach((snapshotChild) => {
                             arr.push(snapshotChild.val());
@@ -102,12 +94,7 @@ class Database {
      * @param {function} f The callback function that display comments.
      */
     commentsByDESC (f) {
-
-        this.ROOT
-            .orderByChild('time')
-            .limitToFirst(this.row)
-            .on('child_added', f);
-
+        // TO DO
     }
 
 }
