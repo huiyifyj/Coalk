@@ -11,7 +11,7 @@ module.exports = {
     time: {
 
         now: 'now',
-        second: '  seconds ago',
+        second: ' seconds ago',
         minute: ' minutes ago',
         hour: ' hours ago',
         day: ' days ago',

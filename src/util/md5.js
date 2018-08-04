@@ -127,10 +127,10 @@ const binlMD5 = (x, len) => {
     let c = -1732584194;
     let d = 271733878;
 
-    const aOrigin = a;
-    const bOrigin = b;
-    const cOrigin = c;
-    const dOrigin = d;
+    const originA = a;
+    const originB = b;
+    const originC = c;
+    const originD = d;
 
     for (let i = 0; i < x.length; i += 16) {
         // First cycle
@@ -202,10 +202,10 @@ const binlMD5 = (x, len) => {
         c = md5ii(c, d, a, b, x[i + 2], 15, 718787259);
         b = md5ii(b, c, d, a, x[i + 9], 21, -343485551);
         // Last cycle
-        a = safeAdd(a, aOrigin);
-        b = safeAdd(b, bOrigin);
-        c = safeAdd(c, cOrigin);
-        d = safeAdd(d, dOrigin);
+        a = safeAdd(a, originA);
+        b = safeAdd(b, originB);
+        c = safeAdd(c, originC);
+        d = safeAdd(d, originD);
     }
 
     return [a, b, c, d];
