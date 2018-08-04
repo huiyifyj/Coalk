@@ -71,6 +71,14 @@ class Database {
 
     }
 
+    test () {
+
+        return this.ROOT
+                   .orderByChild('time')
+                   .limitToLast(this.row)
+                   .once('value')
+    }
+
     /**
      * Display comments by DESC.
      * Sort by descending order of time.

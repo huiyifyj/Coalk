@@ -86,11 +86,26 @@ class App {
         /**
          * Display comments by 'time' ASC.
          */
+        window.TEST = [];
         this.database.commentsByASC((snapshot) => {
 
-            document.getElementById('comments-main').innerHTML += new commentTmp(snapshot.val(), this.option).template();
+            // document.getElementById('comments-main').innerHTML += new commentTmp(snapshot.val(), this.option).template();
+            window.TEST.push(snapshot.val());
+            
 
         });
+console.log(window.TEST)
+        // this.database.test().then((snapshot) => {
+        //     const a = [];
+        //     snapshot.forEach(snapshotChild => {
+        //         // console.log(snapshotChild.val())
+        //         a.push(snapshotChild.val())
+        //     });
+        //     a.reverse();
+        //     for (let i = 0; i < a.length; i++) {
+        //         document.getElementById('comments-main').innerHTML += new commentTmp(a[i], this.option).template();
+        //     }
+        // })
 
     }
 
