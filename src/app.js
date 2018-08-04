@@ -106,7 +106,7 @@ class App {
          * Attach load other comment event to button that id is `load-more`.
          */
         (document.getElementById('load-more')) ?
-            load() :
+            load(this.database) :
             null;
 
     }
