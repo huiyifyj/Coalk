@@ -5,9 +5,9 @@ import submit from './events/submit';
 import input from './view/input.html';
 import footer from './view/footer.html';
 import noComment from './view/noComment.html';
-import commentTmp from './view/comment';
+import Comment from './view/comment';
 
-import database from './firebase/database';
+import Database from './firebase/database';
 
 /**
  * @class App
@@ -24,8 +24,8 @@ class App {
 
         this.initFirebase();
 
-        this.database = new database(this.option);
-        this.commentTmp = new commentTmp(this.option);
+        this.database = new Database(this.option);
+        this.commentTmp = new Comment(this.option);
 
         this.initView();
 
@@ -54,11 +54,11 @@ class App {
 
         ROOT.innerHTML = input + footer;
 
-        this.listen();
+        this.controller();
 
     }
 
-    listen () {
+    controller () {
 
         /**
          * Attach submit event to button that id is `submit-comment`.
@@ -87,12 +87,12 @@ class App {
         /**
          * Display comments by 'time' ASC.
          */
-        this.database.commentsByASC((snapshot) => {
+        // this.database.commentsByASC((snapshot) => {
 
-            document.getElementById('comments-main').innerHTML += this.commentTmp.template(snapshot.val());
-            
+        //     document.getElementById('comments-main').innerHTML += this.commentTmp.template(snapshot.val());
 
-        });
+        // });
+
         // this.database.test().then((snapshot) => {
         //     const a = [];
         //     snapshot.forEach(snapshotChild => {
@@ -104,7 +104,11 @@ class App {
         //         document.getElementById('comments-main').innerHTML += new commentTmp(a[i], this.option).template();
         //     }
         // })
-
+        this.database.test().then((arr) => {
+            for (let i = 0; i < arr.length; i++) {
+                document.getElementById('comments-main').innerHTML += this.commentTmp.template(arr[i]);
+            }
+        });
     }
 
 }

@@ -73,10 +73,26 @@ class Database {
 
     test () {
 
-        return this.ROOT
-                   .orderByChild('time')
-                   .limitToLast(this.row)
-                   .once('value')
+        return new Promise((resolve, reject) => {
+            try {
+                this.ROOT
+                    .orderByChild('time')
+                    .limitToLast(this.row)
+                    .once('value')
+                    .then((snapshot) => {
+                        const arr = [];
+
+                        snapshot.forEach((snapshotChild) => {
+                            arr.push(snapshotChild.val());
+                        });
+
+                        resolve(arr.reverse());
+                    })
+            } catch (error) {
+                reject(error);
+            }
+        });
+
     }
 
     /**

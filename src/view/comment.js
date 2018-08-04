@@ -16,9 +16,7 @@ class Comment {
 
         this.cdn = option.cdn;
 
-        this.languageTime = languageObj(this.language).time;
-        
-        // this.formatData = time.formatData(new Date(this.commentData.time));
+        this.languageTime = languageObj(option.language).time;
 
     }
 
