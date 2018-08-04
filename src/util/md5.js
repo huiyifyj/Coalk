@@ -12,26 +12,22 @@
 export default (string) => {
 
     /**
-     * Encode a string that is inputed as utf-8.
-     * @type {string}
+     * @type {string} Encode a string that is inputed as utf-8.
      */
     const stringUTF8 = unescape(encodeURIComponent(string));
 
     /**
-     * A number array that is handled.
-     * @type {number[]}
+     * @type {number[]} A number array that is handled.
      */
     const stringNumArr = rstr2binl(stringUTF8);
 
     /**
-     * The number array that is realized by algorithm.
-     * @type {number[]}
+     * @type {number[]} The number array that is realized by algorithm.
      */
     const binlMD5Arr = binlMD5(stringNumArr, stringUTF8.length * 8);
 
     /**
-     * The MD5 of raw string that is calculated by final number array.
-     * @type {string}
+     * @type {string} The MD5 of raw string that is calculated by final number array.
      */
     const rawString = binl2rstr(binlMD5Arr);
 
@@ -52,13 +48,11 @@ const rstr2binl = (input) => {
 
     output[(input.length >> 2) - 1] = undefined;
 
-    for (let i = 0; i < output.length; i += 1) {
+    for (let i = 0; i < output.length; i ++) {
         output[i] = 0;
     }
 
-    let length8 = input.length * 8;
-
-    for (let i = 0; i < length8; i += 8) {
+    for (let i = 0; i < input.length * 8; i += 8) {
         output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << (i % 32);
     }
 
