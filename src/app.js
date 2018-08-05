@@ -6,6 +6,7 @@ import load from './events/load';
 import input from './view/input.html';
 import footer from './view/footer.html';
 import noComment from './view/noComment.html';
+import loading from './view/loading.html';
 import Comment from './view/comment';
 
 import Database from './firebase/database';
@@ -53,7 +54,7 @@ class App {
 
         const ROOT = this.option.container;
 
-        ROOT.innerHTML = input + footer;
+        ROOT.innerHTML = loading + input + footer;
 
         this.controller();
         this.listener();

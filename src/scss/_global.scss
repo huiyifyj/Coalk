@@ -19,6 +19,7 @@ svg {
     vertical-align: middle;
 }
 
+// Textarea Keyframes, _input.scss.
 @keyframes textareaLengthen {
     0% {
         min-height: 80px;
@@ -29,16 +30,15 @@ svg {
     }
 }
 
-@keyframes messagesCountInserted {
-    0% {
-        outline-color: #fff;
-    }
-
-    50% {
-        outline-color: #555;
-    }
-
+// Loading Keyframes, _loading.scss.
+@keyframes loadingDot {
+    0%,
+    80%,
     100% {
-        outline-color: #000;
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1.0);
     }
 }
