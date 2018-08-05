@@ -60,6 +60,8 @@ class Database {
     /**
      * Display comments by ASC.
      * Sort by ascending order of time.
+     *
+     * @return {Promise}
      */
     commentsByASC () {
 
@@ -94,7 +96,7 @@ class Database {
             try {
                 this.ROOT
                     .orderByChild('time')
-                    .startAt()
+                    .startAt(1533265200000)
                     .limitToLast(this.row)
                     .once('value')
                     .then()
@@ -109,7 +111,7 @@ class Database {
      * Display comments by DESC.
      * Sort by descending order of time.
      *
-     * @param {function} f The callback function that display comments.
+     * @return {Promise}
      */
     commentsByDESC () {
         // TO DO
