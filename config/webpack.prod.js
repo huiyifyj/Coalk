@@ -4,6 +4,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const pkg = require('../package.json');
+
+const BANNER = `${pkg.name.toUpperCase()} v${pkg.version}
+Copyright (C) 2018 ${pkg.author.name}.`
 
 module.exports = {
 
@@ -34,6 +38,7 @@ module.exports = {
             APP_VERSION: `'${require('../package.json').version}'`,
             APP_NAME: `'${require('../package.json').name}'`
         }),
+        new webpack.BannerPlugin(BANNER),
         new MiniCssExtractPlugin({
             filename: '[name].min.css'
         }),
