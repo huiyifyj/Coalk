@@ -6,7 +6,7 @@
 export default (database) => {
 
     document.getElementById('load-more').addEventListener('click', () => {
-        console.log('dasasa');
+        console.log(database);
     });
 
 }

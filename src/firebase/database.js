@@ -60,10 +60,8 @@ class Database {
     /**
      * Display comments by ASC.
      * Sort by ascending order of time.
-     *
-     * @param {function} f The callback function that display comments.
      */
-    commentsByASC (f) {
+    commentsByASC () {
 
         return new Promise((resolve, reject) => {
             try {
@@ -88,12 +86,32 @@ class Database {
     }
 
     /**
+     * Load more comments every clicking on button.
+     */
+    loadComments () {
+
+        return new Promise((resolve, reject) => {
+            try {
+                this.ROOT
+                    .orderByChild('time')
+                    .startAt()
+                    .limitToLast(this.row)
+                    .once('value')
+                    .then()
+            } catch (error) {
+                reject(error);
+            }
+        });
+
+    }
+
+    /**
      * Display comments by DESC.
      * Sort by descending order of time.
      *
      * @param {function} f The callback function that display comments.
      */
-    commentsByDESC (f) {
+    commentsByDESC () {
         // TO DO
     }
 
