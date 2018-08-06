@@ -54,7 +54,7 @@ const handleOption = (option) => {
         /**
          * - Your website domain, such as: `blog.huiyifyj.cn`.
          * - The String don't include 'http(s)://' ...
-         * @type {string}
+         * @type {string} Your domain in use.
          */
         domain: option.domain || window.location.hostname,
 
@@ -79,7 +79,7 @@ const handleOption = (option) => {
      * @throws {error}
      */
     if (!option.databaseURL) {
-        throw `\nPlease input databaseURL and non-null.`;
+        throw `\n'databaseURL' must be non-empty strings.`;
     }
 
     /**
@@ -87,7 +87,7 @@ const handleOption = (option) => {
      * @throws {error}
      */
     if (!option.apiKey) {
-        throw `\nPlease input apiKey and non-null.`;
+        throw `\n'apiKey' must be non-empty strings`;
     }
 
     /**
