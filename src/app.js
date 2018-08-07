@@ -34,7 +34,7 @@ class App {
     }
 
     /**
-     * Note: `firebase` is global namespace
+     * Note: `firebase` is global namespace.
      * Initialize firebase app by apiKey and databaseURL.
      * - See [firebase document](https://firebase.google.com/docs/web/setup).
      */
