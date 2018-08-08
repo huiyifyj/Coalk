@@ -60,50 +60,28 @@ class Database {
     /**
      * Display comments by ASC.
      * Sort by ascending order of time.
-     *
-     * @return {Promise}
+     * @param {Function} f Callback function
      */
-    commentsByASC () {
+    commentsByASC (f) {
 
-        return new Promise((resolve, reject) => {
-            try {
-                this.ROOT
-                    .orderByChild('time')
-                    .limitToLast(this.row)
-                    .once('value')
-                    .then((snapshot) => {
-                        let arr = [];
-
-                        snapshot.forEach((snapshotChild) => {
-                            arr.push(snapshotChild.val());
-                        });
-
-                        resolve(arr.reverse());
-                    })
-            } catch (error) {
-                reject(error);
-            }
-        });
+        this.ROOT
+            .orderByChild('time')
+            .limitToLast(this.row)
+            .on('child_added', f);
 
     }
 
     /**
      * Load more comments every clicking on button.
+     * @param {Function} f Callback function
      */
-    loadComments () {
+    loadComments (f) {
 
-        return new Promise((resolve, reject) => {
-            try {
-                this.ROOT
+        return  this.ROOT
                     .orderByChild('time')
                     .startAt(1533265200000)
                     .limitToLast(this.row)
-                    .once('value')
-                    .then()
-            } catch (error) {
-                reject(error);
-            }
-        });
+                    .once('child_changed');
 
     }
 
@@ -111,7 +89,7 @@ class Database {
      * Display comments by DESC.
      * Sort by descending order of time.
      *
-     * @return {Promise}
+     * @return {Function} f Callback function
      */
     commentsByDESC () {
         // TO DO

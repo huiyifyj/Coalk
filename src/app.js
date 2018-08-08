@@ -23,6 +23,7 @@ class App {
     constructor (option) {
 
         this.option = handleOption(option);
+        this.ROOT_ELEMENT = this.option.container;
 
         this.initFirebase();
 
@@ -30,6 +31,8 @@ class App {
         this.commentTmp = new Comment(this.option);
 
         this.initView();
+
+        this.COMMENT_MAIN = this.ROOT_ELEMENT.querySelector('#comments-main');
 
     }
 
@@ -52,9 +55,7 @@ class App {
      */
     initView () {
 
-        const ROOT = this.option.container;
-
-        ROOT.innerHTML = loading + input + footer;
+        this.ROOT_ELEMENT.innerHTML = loading + input + footer;
 
         this.controller();
         this.listener();
@@ -83,15 +84,30 @@ class App {
         /**
          * Display comments by 'time' ASC.
          */
-        this.database.commentsByASC()
-            .then((arr) => {
-                for (let i = 0; i < arr.length; i++) {
-                    document.getElementById('comments-main').innerHTML += this.commentTmp.template(arr[i]);
-                }
+        this.database.commentsByASC((snapshot) => {
+
+            const NODE_LI = document.createElement('li')
+            NODE_LI.innerHTML = this.commentTmp.template(snapshot.val());
+
+            this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
+
+        });
+
+        setTimeout(() => {
+
+            this.database.loadComments().then((s) => {
+
+                // s.forEach((element) => {
+                //     const a = this.commentTmp.template(element.val());
+                //     console.log(a);
+                // })
+
+                const a = this.commentTmp.template(s.val());
+                // console.log(a);
+                console.log(s.val())
             })
-            .catch((error) => {
-                throw error;
-            });
+
+        }, 3000);
 
     }
 
