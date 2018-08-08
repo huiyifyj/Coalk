@@ -69,7 +69,7 @@ class App {
          */
         this.database.commentsNum()
             .then((num) => {
-                document.querySelector('.comment-num').innerText = (num) ? num : 'No';
+                this.ROOT_ELEMENT.querySelector('.comment-num').innerText = (num) ? num : 'No';
 
                 if (!num) {
                     document.getElementById('comments-main').innerHTML = noComment;
@@ -93,22 +93,6 @@ class App {
 
         });
 
-        setTimeout(() => {
-
-            this.database.loadComments().then((s) => {
-
-                // s.forEach((element) => {
-                //     const a = this.commentTmp.template(element.val());
-                //     console.log(a);
-                // })
-
-                const a = this.commentTmp.template(s.val());
-                // console.log(a);
-                console.log(s.val())
-            })
-
-        }, 3000);
-
     }
 
     listener () {
@@ -124,8 +108,24 @@ class App {
          * Attach load other comment event to button that id is `load-more`.
          */
         (document.getElementById('load-more')) ?
-            load(this.database) :
+            // load(this.database) :
+            this.ROOT_ELEMENT.querySelector('#load-more').addEventListener('click', () => {
+                this.a();
+            }) :
             null;
+
+    }
+
+    a () {
+
+        this.database.loadComments().then((s) => {
+
+            s.forEach((element) => {
+                const a = this.commentTmp.template(element.val());
+                console.log(a);
+            })
+
+        })
 
     }
 

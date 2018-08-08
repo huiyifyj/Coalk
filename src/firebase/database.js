@@ -30,6 +30,7 @@ class Database {
         this.ROOT.push(inputObj)
             .then(() => {
                 console.log('Comment succeeded');
+                new Notification('Comment succeeded');
             })
             .catch((error) => {
                 throw error;
@@ -81,7 +82,7 @@ class Database {
                     .orderByChild('time')
                     .startAt(1533265200000)
                     .limitToLast(this.row)
-                    .once('child_changed');
+                    .once('value');
 
     }
 
