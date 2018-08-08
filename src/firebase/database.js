@@ -74,13 +74,12 @@ class Database {
 
     /**
      * Load more comments every clicking on button.
-     * @param {Function} f Callback function
      */
-    loadComments (f) {
+    loadComments () {
 
         return  this.ROOT
                     .orderByChild('time')
-                    .startAt(1533265200000)
+                    .endAt(1533265200000)
                     .limitToLast(this.row)
                     .once('value');
 

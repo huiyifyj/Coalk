@@ -82,11 +82,12 @@ class App {
             });
 
         /**
-         * Display comments by 'time' ASC.
+         * Display and load comments by 'time' ASC from the beginning.
          */
         this.database.commentsByASC((snapshot) => {
 
-            const NODE_LI = document.createElement('li')
+            const NODE_LI = document.createElement('div');
+
             NODE_LI.innerHTML = this.commentTmp.template(snapshot.val());
 
             this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
@@ -98,34 +99,34 @@ class App {
     listener () {
 
         /**
-         * Attach submit event to button that id is `submit-comment`.
+         * Bind submit event to button that id is `submit-comment`.
          */
         document.getElementById('submit-comment').addEventListener('click', () => {
             submit(this.database);
         });
 
         /**
-         * Attach load other comment event to button that id is `load-more`.
+         * Bind load other comment event to button that id is `load-more`.
          */
-        (document.getElementById('load-more')) ?
+        if (document.getElementById('load-more')) {
             // load(this.database) :
             this.ROOT_ELEMENT.querySelector('#load-more').addEventListener('click', () => {
-                this.a();
-            }) :
-            null;
+                this.database.loadComments().then((snapshot) => {
 
-    }
+                    /**
+                     * @type {string} The DOMString of comments loading.
+                     */
+                    let LOAD_HTML = '';
 
-    a () {
+                    snapshot.forEach((element) => {
+                        LOAD_HTML = this.commentTmp.template(element.val()) + LOAD_HTML;
+                    });
 
-        this.database.loadComments().then((s) => {
+                    this.ROOT_ELEMENT.querySelector('#comments-main').insertAdjacentHTML('beforeend', LOAD_HTML);
 
-            s.forEach((element) => {
-                const a = this.commentTmp.template(element.val());
-                console.log(a);
+                })
             })
-
-        })
+        }
 
     }
 
