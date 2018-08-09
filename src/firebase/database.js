@@ -31,9 +31,15 @@ class Database {
             .once('value')
             .then((snapshot) => {
 
-                const COMMENT_ID = snapshot.numChildren() + 1;
+                /**
+                 * @type {Timestamp} The timestamp that comment is posted.
+                 */
+                inputObj['time'] = new Date().getTime();
 
-                inputObj['id'] = COMMENT_ID;
+                /**
+                 * @type {number} Add 'id' for comment data.
+                 */
+                inputObj['id'] = snapshot.numChildren() + 1;;
 
                 this.ROOT
                     .push(inputObj)

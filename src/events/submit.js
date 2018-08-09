@@ -30,11 +30,6 @@ export default (database) => {
         verify(inputObj).then((bool) => {
             if (bool){
 
-                /**
-                 * @type {Timestamp} The timestamp that comment is posted.
-                 */
-                inputObj['time'] = new Date().getTime();
-
                 database.submitComment(inputObj);
 
                 // Remove value when comment succeeded.
