@@ -29,13 +29,7 @@ export default (database) => {
 
         verify(inputObj).then((bool) => {
             if (bool){
-
                 database.submitComment(inputObj);
-
-                // Remove value when comment succeeded.
-                // for(var key in inputObj){
-                //     document.getElementById('fyj-' + key).value = '';
-                // }
             } else {
                 throw 'Wrong name and e-mail';
             }

@@ -44,9 +44,15 @@ class Database {
                 this.ROOT
                     .push(inputObj)
                     .then(() => {
+
                         // Comment succeeded.
                         console.log('Comment succeeded');
                         new Notification('Comment succeeded');
+
+                        // Remove value when comment succeeded.
+                        // for(var key in inputObj){
+                        //     document.getElementById('fyj-' + key).value = '';
+                        // }
                     })
                     .catch((error) => {
                         throw error;
