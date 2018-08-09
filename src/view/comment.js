@@ -30,7 +30,7 @@ class Comment {
 
         const date = new Date(commentData.time);
 
-        return `<div class="comments-wrap" id="commentID-${commentData.id}"><div class="comment-body"><img class="avatar-img" src="${this.cdn + md5(commentData.email)}"><div class="comment-box"><div class="username"><a href="${commentData.url}" target="_blank">${commentData.name}</a></div><div class="comment-time" title="${date}">${periodTime(date, this.languageTime)}</div></div><div class="comment-content">${commentData.comment}</div></div></div>`;
+        return `<div class="comments-wrap" id="comment-${commentData.id}"><div class="comment-body"><img class="avatar-img" src="${this.cdn + md5(commentData.email)}"><div class="comment-box"><div class="username"><a href="${commentData.url}" target="_blank">${commentData.name}</a></div><div class="comment-time" title="${date}">${periodTime(date, this.languageTime)}</div></div><div class="comment-content">${commentData.comment}</div></div></div>`;
 
     }
 

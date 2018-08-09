@@ -94,7 +94,7 @@ class Database {
     commentsByASC (f) {
 
         this.ROOT
-            .orderByChild('time')
+            .orderByChild('id')
             .limitToLast(this.row)
             .on('child_added', f);
 

@@ -87,6 +87,8 @@ class App {
 
             const NODE_LI = document.createElement('div');
 
+            NODE_LI.id = 'comment-' + snapshot.val().id;
+
             NODE_LI.innerHTML = this.commentTmp.template(snapshot.val());
 
             this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
@@ -110,6 +112,7 @@ class App {
         if (this.ROOT_ELEMENT.querySelector('#load-more')) {
 
             this.ROOT_ELEMENT.querySelector('#load-more').addEventListener('click', () => {
+
                 this.database.loadComments().then((snapshot) => {
 
                     /**
@@ -124,6 +127,7 @@ class App {
                     this.COMMENT_MAIN.insertAdjacentHTML('beforeend', LOAD_HTML);
 
                 })
+
             })
 
         }
