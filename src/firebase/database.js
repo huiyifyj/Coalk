@@ -27,10 +27,25 @@ class Database {
      */
     submitComment (inputObj) {
 
-        this.ROOT.push(inputObj)
-            .then(() => {
-                console.log('Comment succeeded');
-                new Notification('Comment succeeded');
+        this.ROOT
+            .once('value')
+            .then((snapshot) => {
+
+                const COMMENT_ID = snapshot.numChildren() + 1;
+
+                inputObj['id'] = COMMENT_ID;
+
+                this.ROOT
+                    .push(inputObj)
+                    .then(() => {
+                        // Comment succeeded.
+                        console.log('Comment succeeded');
+                        new Notification('Comment succeeded');
+                    })
+                    .catch((error) => {
+                        throw error;
+                    });
+
             })
             .catch((error) => {
                 throw error;
