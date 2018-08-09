@@ -1,7 +1,6 @@
 import handleOption from './util/option';
 
 import submit from './events/submit';
-import load from './events/load';
 
 import input from './view/input.html';
 import footer from './view/footer.html';
@@ -101,15 +100,15 @@ class App {
         /**
          * Bind submit event to button that id is `submit-comment`.
          */
-        document.getElementById('submit-comment').addEventListener('click', () => {
+        this.ROOT_ELEMENT.querySelector('#submit-comment').addEventListener('click', () => {
             submit(this.database);
         });
 
         /**
          * Bind load other comment event to button that id is `load-more`.
          */
-        if (document.getElementById('load-more')) {
-            // load(this.database) :
+        if (this.ROOT_ELEMENT.querySelector('#load-more')) {
+
             this.ROOT_ELEMENT.querySelector('#load-more').addEventListener('click', () => {
                 this.database.loadComments().then((snapshot) => {
 
@@ -122,10 +121,11 @@ class App {
                         LOAD_HTML = this.commentTmp.template(element.val()) + LOAD_HTML;
                     });
 
-                    this.ROOT_ELEMENT.querySelector('#comments-main').insertAdjacentHTML('beforeend', LOAD_HTML);
+                    this.COMMENT_MAIN.insertAdjacentHTML('beforeend', LOAD_HTML);
 
                 })
             })
+
         }
 
     }

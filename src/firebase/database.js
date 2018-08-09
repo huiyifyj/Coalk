@@ -61,6 +61,7 @@ class Database {
     /**
      * Display comments by ASC.
      * Sort by ascending order of time.
+     *
      * @param {Function} f Callback function
      */
     commentsByASC (f) {
