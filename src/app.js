@@ -116,12 +116,14 @@ class App {
                 /**
                  * @type {string} The lastChild node 'id' property value. such as, 'comment-1'.
                  */
-                const ELEMENT_ID = this.COMMENT_MAIN.lastChild.previousSibling.getAttribute('id');
+                let ELEMENT_ID = this.COMMENT_MAIN.lastChild.previousSibling.getAttribute('id');
 
                 /**
                  * @type {number} The number that is removed the first 8 characters.
                  */
-                const ID = ELEMENT_ID.substring(8);
+                let ID = ELEMENT_ID.substring(8);
+
+                console.log(ID)
 
                 this.database.loadComments(ID).then((snapshot) => {
 

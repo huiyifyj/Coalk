@@ -17,6 +17,8 @@ class Database {
         this.row = option.row;
 
         this.ROOT = firebase.database().ref('/' + this.option.path);
+        this.COMMENT = this.ROOT.child('comments');
+        this.REPLY = this.ROOT.child('reply');
 
     }
 
@@ -27,7 +29,7 @@ class Database {
      */
     submitComment (inputObj) {
 
-        this.ROOT
+        this.COMMENT
             .once('value')
             .then((snapshot) => {
 
@@ -41,7 +43,7 @@ class Database {
                  */
                 inputObj['id'] = snapshot.numChildren() + 1;;
 
-                this.ROOT
+                this.COMMENT
                     .push(inputObj)
                     .then(() => {
 
@@ -74,7 +76,8 @@ class Database {
 
         return new Promise((resolve, reject) => {
             try {
-                this.ROOT.once('value')
+                this.COMMENT
+                    .once('value')
                     .then((snapshot) => {
                         resolve(snapshot.numChildren());
                     });
@@ -93,7 +96,7 @@ class Database {
      */
     commentsByASC (f) {
 
-        this.ROOT
+        this.COMMENT
             .orderByChild('id')
             .limitToLast(this.row)
             .on('child_added', f);
@@ -103,12 +106,12 @@ class Database {
     /**
      * Load more comments every clicking on button.
      *
-     * @param {number} id
+     * @param {number} id The last comment node id.
      * @return {Promise}
      */
     loadComments (id) {
 
-        return  this.ROOT
+        return  this.COMMENT
                     .orderByChild('id')
                     .endAt(id - 1)
                     .limitToLast(this.row)
