@@ -113,7 +113,17 @@ class App {
 
             this.ROOT_ELEMENT.querySelector('#load-more').addEventListener('click', () => {
 
-                this.database.loadComments().then((snapshot) => {
+                /**
+                 * @type {string} The lastChild node 'id' property value. such as, 'comment-1'.
+                 */
+                const ELEMENT_ID = this.COMMENT_MAIN.lastChild.previousSibling.getAttribute('id');
+
+                /**
+                 * @type {number} The number that is removed the first 8 characters.
+                 */
+                const ID = ELEMENT_ID.substring(8);
+
+                this.database.loadComments(ID).then((snapshot) => {
 
                     /**
                      * @type {string} The DOMString of comments loading.

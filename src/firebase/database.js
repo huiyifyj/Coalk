@@ -102,12 +102,15 @@ class Database {
 
     /**
      * Load more comments every clicking on button.
+     *
+     * @param {number} id
+     * @return {Promise}
      */
-    loadComments () {
+    loadComments (id) {
 
         return  this.ROOT
-                    .orderByChild('time')
-                    .endAt(1533265200000)
+                    .orderByChild('id')
+                    .endAt(id - 1)
                     .limitToLast(this.row)
                     .once('value');
 
