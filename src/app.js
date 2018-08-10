@@ -111,6 +111,11 @@ class App {
          */
         if (this.ROOT_ELEMENT.querySelector('#load-more')) {
 
+            /**
+             * @type {boolean}
+             */
+            let numClick = false;
+
             this.ROOT_ELEMENT.querySelector('#load-more').addEventListener('click', () => {
 
                 /**
@@ -119,26 +124,39 @@ class App {
                 let ELEMENT_ID = this.COMMENT_MAIN.lastChild.previousSibling.getAttribute('id');
 
                 /**
-                 * @type {number} The number that is removed the first 8 characters.
+                 * @type {number} The number that is removed the first 8 characters('comment-').
                  */
                 let ID = ELEMENT_ID.substring(8);
 
-                console.log(ID)
+                /**
+                 * Fix the bug while clicking at first.
+                 */
+                (!numClick) ? numClick = true : ID --;
 
-                this.database.loadComments(ID).then((snapshot) => {
+                console.log(numClick)
 
-                    /**
-                     * @type {string} The DOMString of comments loading.
-                     */
-                    let LOAD_HTML = '';
+                this.database.loadComments(ID)
+                    .then((snapshot) => {
 
-                    snapshot.forEach((element) => {
-                        LOAD_HTML = this.commentTmp.template(element.val()) + LOAD_HTML;
+                        /**
+                         * @type {string} The DOMString of comments loading.
+                         */
+                        let LOAD_HTML = '';
+
+                        snapshot.forEach((element) => {
+                            LOAD_HTML = this.commentTmp.template(element.val()) + LOAD_HTML;
+                        });
+
+                        this.COMMENT_MAIN.insertAdjacentHTML('beforeend', LOAD_HTML);
+
+                    })
+                    .catch((error) => {
+                        throw error;
                     });
 
-                    this.COMMENT_MAIN.insertAdjacentHTML('beforeend', LOAD_HTML);
-
-                })
+                if (ID < 10) {
+                    document.getElementById('load-more').remove();
+                }
 
             })
 

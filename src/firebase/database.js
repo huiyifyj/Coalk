@@ -41,7 +41,7 @@ class Database {
                 /**
                  * @type {number} Add 'id' for comment data.
                  */
-                inputObj['id'] = snapshot.numChildren() + 1;;
+                inputObj['id'] = snapshot.numChildren() + 1;
 
                 this.COMMENT
                     .push(inputObj)
@@ -52,9 +52,10 @@ class Database {
                         new Notification('Comment succeeded');
 
                         // Remove value when comment succeeded.
-                        // for(var key in inputObj){
-                        //     document.getElementById('fyj-' + key).value = '';
-                        // }
+                        for (var key in inputObj) {
+                            document.getElementById('fyj-' + key).value = '';
+                        }
+
                     })
                     .catch((error) => {
                         throw error;
