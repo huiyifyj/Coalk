@@ -134,8 +134,6 @@ class App {
                  */
                 (!numClick) ? numClick = true : ID --;
 
-                console.log(numClick)
-
                 this.database.loadComments(ID)
                     .then((snapshot) => {
 
