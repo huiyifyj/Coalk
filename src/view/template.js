@@ -34,6 +34,12 @@ class Template {
 
     }
 
+    reply (replyData) {
+
+        const data = new Date(replyData.time);
+
+    }
+
 }
 
 export default Template;
