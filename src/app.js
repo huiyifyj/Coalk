@@ -44,6 +44,7 @@ class App {
 
         firebase.initializeApp({
             apiKey: this.option.apiKey,
+            authDomain: this.option.authDomain,
             databaseURL: this.option.databaseURL
         });
 

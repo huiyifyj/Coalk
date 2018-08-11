@@ -47,6 +47,11 @@ const handleOption = (option) => {
         apiKey: '',
 
         /**
+         * @type {string} Firebase Authentication initializating configuration.
+         */
+        authDomain: '',
+
+        /**
          * @type {string} Firebase database initializating configuration.
          */
         databaseURL: '',
