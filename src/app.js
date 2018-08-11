@@ -6,7 +6,7 @@ import input from './view/input.html';
 import footer from './view/footer.html';
 import noComment from './view/noComment.html';
 import loading from './view/loading.html';
-import Comment from './view/comment';
+import Template from './view/template';
 
 import Database from './firebase/database';
 
@@ -27,7 +27,7 @@ class App {
         this.initFirebase();
 
         this.database = new Database(this.option);
-        this.commentTmp = new Comment(this.option);
+        this.template = new Template(this.option);
 
         this.initView();
 
@@ -89,7 +89,7 @@ class App {
 
             NODE_LI.id = 'comment-' + snapshot.val().id;
 
-            NODE_LI.innerHTML = this.commentTmp.template(snapshot.val());
+            NODE_LI.innerHTML = this.template.comment(snapshot.val());
 
             this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
 
@@ -144,7 +144,7 @@ class App {
                         let LOAD_HTML = '';
 
                         snapshot.forEach((element) => {
-                            LOAD_HTML = this.commentTmp.template(element.val()) + LOAD_HTML;
+                            LOAD_HTML = this.template.comment(element.val()) + LOAD_HTML;
                         });
 
                         this.COMMENT_MAIN.insertAdjacentHTML('beforeend', LOAD_HTML);

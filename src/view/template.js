@@ -4,9 +4,9 @@ import periodTime from '../util/time';
 import languageObj from '../i18n/lang';
 
 /**
- * @class Comment
+ * @class Template
  */
-class Comment {
+class Template {
 
     /**
      * @param {object} option The app option setting.
@@ -26,7 +26,7 @@ class Comment {
      * @param {object} commentData The data object comment.
      * @return {string} The comment template string.
      */
-    template (commentData) {
+    comment (commentData) {
 
         const date = new Date(commentData.time);
 
@@ -36,4 +36,4 @@ class Comment {
 
 }
 
-export default Comment;
+export default Template;
