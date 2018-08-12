@@ -15,8 +15,8 @@ class Auth {
 
         this.AUTH.signInAnonymously();
 
-        const a = this.AUTH.currentUser;
-        console.log(a);
+        // const a = this.AUTH.currentUser;
+        // console.log(a);
 
     }
 

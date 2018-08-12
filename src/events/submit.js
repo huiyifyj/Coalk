@@ -27,6 +27,7 @@ export default (database) => {
 
     if (checkInput(inputObj)) {
 
+        // Verify account by gravatar JSON.
         verify(inputObj).then((bool) => {
             if (bool){
                 database.submitComment(inputObj);
@@ -34,7 +35,6 @@ export default (database) => {
                 throw 'Wrong name and e-mail';
             }
         });
-
     } else {
         throw 'Enter Text Format error.';
     }
@@ -48,11 +48,9 @@ export default (database) => {
  * @return {boolean}
  */
 const checkInput = (data) => {
-
     const urlReg = /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
 
     return (data.name && data.email && data.comment && urlReg.test(data.url)) ?
         true :
         false;
-
 }

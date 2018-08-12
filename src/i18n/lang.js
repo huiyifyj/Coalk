@@ -1,8 +1,8 @@
 import zhCn from './zh-cn';
 import en from './en';
 
-export default (lang) => {
+export default (language) => {
 
-    return (lang == 'zh-cn') ? zhCn : en;
+    return (language == 'zh-cn') ? zhCn : en;
 
 }

@@ -90,8 +90,7 @@ class Database {
     }
 
     /**
-     * Display comments by ASC.
-     * Sort by ascending order of time.
+     * Display comments by ASC. Sort by ascending order of time.
      *
      * @param {Function} f Callback function
      */
