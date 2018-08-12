@@ -67,21 +67,25 @@ class App {
     controller () {
 
         /**
-         * Get comments number and add noComment.html when no comment.
+         * Get comments number and add 'noComment' when no comment.
          */
-        this.database.commentsNum()
-            .then((num) => {
-                this.ROOT_ELEMENT.querySelector('.comment-num').innerText = (num) ? num : 'No';
+        this.database.commentsNum((snapshot) => {
 
-                if (!num) {
-                    document.getElementById('comments-main').innerHTML = noComment;
-                } else if (num <= this.option.row) {
+            let num = snapshot.numChildren();
+
+            if (num) {
+                this.ROOT_ELEMENT.querySelector('.comment-num').innerText = num;
+
+                if (num <= this.option.row) {
                     document.getElementById('load-more').remove();
                 }
-            })
-            .catch((error) => {
-                throw error;
-            });
+
+            } else {
+                this.ROOT_ELEMENT.querySelector('.comment-num').innerText = 'No';
+                this.ROOT_ELEMENT.querySelector('.comments-main').innerHTML = noComment;
+            }
+
+        });
 
         /**
          * Display and load comments by 'time' ASC from the beginning.

@@ -47,11 +47,12 @@ class Database {
                     .push(inputObj)
                     .then(() => {
 
-                        // Comment succeeded.
+                        /**
+                         * Comment successful. And remove value.
+                         */
                         console.log('Comment succeeded');
                         new Notification('Comment succeeded');
 
-                        // Remove value when comment succeeded.
                         for (var key in inputObj) {
                             document.getElementById('fyj-' + key).value = '';
                         }
@@ -71,28 +72,19 @@ class Database {
     /**
      * Get the comments number of this current page.
      *
-     * @return {Promise}
+     * @param {Function} f Callback function.
      */
-    commentsNum () {
+    commentsNum (f) {
 
-        return new Promise((resolve, reject) => {
-            try {
-                this.COMMENT
-                    .once('value')
-                    .then((snapshot) => {
-                        resolve(snapshot.numChildren());
-                    });
-            } catch (error) {
-                reject(error);
-            }
-        });
+        this.COMMENT
+            .on('value', f);
 
     }
 
     /**
      * Display comments by ASC. Sort by ascending order of time.
      *
-     * @param {Function} f Callback function
+     * @param {Function} f Callback function.
      */
     commentsByASC (f) {
 

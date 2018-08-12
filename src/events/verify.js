@@ -10,6 +10,9 @@ import md5 from '../util/md5';
  */
 export default (data) => {
 
+    /**
+     * @type {string} MD5 hash string that is handled by md5 util.
+     */
     const emailHash = md5(data.email);
 
     /**
@@ -48,12 +51,10 @@ export default (data) => {
  * @return {boolean}
  */
 const verify = (response, data, emailHash) => {
-
     const name = response.entry[0].displayName;
     const hash = response.entry[0].hash;
 
     return (name == data.name && hash == emailHash) ?
         true :
         false;
-
 }
