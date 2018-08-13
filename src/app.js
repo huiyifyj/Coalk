@@ -27,7 +27,7 @@ class App {
 
         this.initFirebase();
 
-        this.auth = new Auth();
+        // this.auth = new Auth();
         this.database = new Database(this.option);
         this.template = new Template(this.option);
 
@@ -50,6 +50,11 @@ class App {
             databaseURL: this.option.databaseURL
         });
 
+        /**
+         * Login firebase authentication
+         */
+        firebase.auth().signInWithEmailAndPassword("i@huiyifyj.cn", "commentjs");
+
     }
 
     /**
@@ -71,9 +76,13 @@ class App {
          */
         this.database.commentsNum((snapshot) => {
 
+            /**
+             * @type {number} The current comments number.
+             */
             let num = snapshot.numChildren();
 
             if (num) {
+
                 this.ROOT_ELEMENT.querySelector('.comment-num').innerText = num;
 
                 if (num <= this.option.row) {
@@ -163,7 +172,7 @@ class App {
                     document.getElementById('load-more').remove();
                 }
 
-            })
+            });
 
         }
 

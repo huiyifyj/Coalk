@@ -13,10 +13,7 @@ class Auth {
 
     test () {
 
-        this.AUTH.signInAnonymously();
-
-        // const a = this.AUTH.currentUser;
-        // console.log(a);
+        this.AUTH.signInWithEmailAndPassword("i@huiyifyj.cn", "commentjs");
 
     }
 
