@@ -9,7 +9,6 @@ import loading from './view/loading.html';
 import Template from './view/template';
 
 import Database from './firebase/database';
-import Auth from './firebase/auth';
 
 /**
  * @class App
@@ -27,7 +26,6 @@ class App {
 
         this.initFirebase();
 
-        // this.auth = new Auth();
         this.database = new Database(this.option);
         this.template = new Template(this.option);
 
