@@ -6,14 +6,14 @@ import md5 from '../../src/util/md5';
 const me = {
     name: 'huiyifyj',
     email: 'i@huiyifyj.cn',
-    url: 'http://huiyifyj.cn'
+    url: 'https://huiyifyj.cn'
 }
 
 // Related MD5 Hash Value
 const md5Hash = {
     name: 'f851f84309625ba941a1c99565039474',
     email: '11b334f003ef029c9d154f5dbae18b44',
-    url: '5cea194c52a2a7ebff46b2443727bcbd'
+    url: 'f9b6a6832f6653ea97b38b1a06ca4929'
 }
 
 describe('MD5 Test', function () {

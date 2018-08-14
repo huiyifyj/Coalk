@@ -51,7 +51,7 @@ class App {
         });
 
         /**
-         * Login firebase authentication
+         * Login firebase authentication.
          */
         firebase.auth().signInWithEmailAndPassword("i@huiyifyj.cn", "commentjs");
 
