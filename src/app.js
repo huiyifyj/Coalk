@@ -29,9 +29,15 @@ class App {
         this.database = new Database(this.option);
         this.template = new Template(this.option);
 
-        this.initView();
+        /**
+         * Initialize essential view interface and other configuration.
+         */
+        this.ROOT_ELEMENT.innerHTML = input + footer;
 
         this.COMMENT_MAIN = this.ROOT_ELEMENT.querySelector('#comments-main');
+
+        this.controller();
+        this.listener();
 
     }
 
@@ -55,24 +61,12 @@ class App {
 
     }
 
-    /**
-     * Initialize essential view interface and other configuration.
-     */
-    initView () {
-
-        this.ROOT_ELEMENT.innerHTML = input + footer;
-
-        this.controller();
-        this.listener();
-
-    }
-
     controller () {
 
         /**
          *  Loading effect at the beginning.
          */
-        document.getElementById('comments-main').innerHTML = loading;
+        this.COMMENT_MAIN.innerHTML = loading;
 
         /**
          * Get comments number and add 'noComment' when no comment.
@@ -99,6 +93,8 @@ class App {
 
         });
 
+        let rm = 0;
+
         /**
          * Display and load comments by 'time' ASC from the beginning.
          */
@@ -112,10 +108,16 @@ class App {
 
             this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
 
-            /**
-             * Remove loading effect after comments are completed.
-             */
-            this.COMMENT_MAIN.querySelector('.fyj-loading').remove();
+            rm++;
+
+            if (rm > 7) {
+
+                /**
+                 * Remove loading effect after comments are completed.
+                 */
+                this.COMMENT_MAIN.querySelector('.fyj-loading').remove();
+
+            }
 
         });
 
