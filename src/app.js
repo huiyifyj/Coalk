@@ -60,7 +60,7 @@ class App {
      */
     initView () {
 
-        this.ROOT_ELEMENT.innerHTML = loading + input + footer;
+        this.ROOT_ELEMENT.innerHTML = input + footer;
 
         this.controller();
         this.listener();
@@ -68,6 +68,11 @@ class App {
     }
 
     controller () {
+
+        /**
+         *  Loading effect at the beginning.
+         */
+        document.getElementById('comments-main').innerHTML = loading;
 
         /**
          * Get comments number and add 'noComment' when no comment.
@@ -106,6 +111,11 @@ class App {
             NODE_LI.innerHTML = this.template.comment(snapshot.val());
 
             this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
+
+            /**
+             * Remove loading effect after comments are completed.
+             */
+            this.COMMENT_MAIN.querySelector('.fyj-loading').remove();
 
         });
 
