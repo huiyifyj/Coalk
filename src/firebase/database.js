@@ -36,7 +36,7 @@ class Database {
                 /**
                  * @type {Timestamp} The timestamp that comment is posted.
                  */
-                inputObj['time'] = new Date().getTime();
+                inputObj['time'] = Date.now();
 
                 /**
                  * @type {number} Add 'id' for comment data.
