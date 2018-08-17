@@ -93,7 +93,7 @@ class App {
 
         });
 
-        let rm = 0;
+        let rmNum = 0;
 
         /**
          * Display and load comments by 'time' ASC from the beginning.
@@ -108,9 +108,9 @@ class App {
 
             this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
 
-            rm++;
+            rmNum ++;
 
-            if (rm > 7) {
+            if (rmNum > 7) {
 
                 /**
                  * Remove loading effect after comments are completed.
