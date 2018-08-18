@@ -24,7 +24,7 @@ class App {
         this.option = handleOption(option);
         this.ROOT_ELEMENT = this.option.container;
 
-        this.initFirebase();
+        this.init();
 
         this.database = new Database(this.option);
         this.template = new Template(this.option);
@@ -42,12 +42,15 @@ class App {
     }
 
     /**
-     * Note: `firebase` is global namespace.
-     * Initialize firebase app by apiKey and databaseURL.
-     * - See [firebase document](https://firebase.google.com/docs/web/setup).
+     * Initialize comment app.
      */
-    initFirebase () {
+    init () {
 
+        /**
+         * Note: `firebase` is global namespace.
+         * Initialize firebase app by apiKey and databaseURL.
+         * - See [firebase document](https://firebase.google.com/docs/web/setup).
+         */
         firebase.initializeApp({
             apiKey: this.option.apiKey,
             authDomain: this.option.authDomain,
@@ -58,6 +61,11 @@ class App {
          * Login firebase authentication.
          */
         firebase.auth().signInWithEmailAndPassword("i@huiyifyj.cn", "commentjs");
+
+        /**
+         * Initialize essential view interface and other configuration.
+         */
+        this.ROOT_ELEMENT.innerHTML = input + footer;
 
     }
 
