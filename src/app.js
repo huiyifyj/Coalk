@@ -108,13 +108,12 @@ class App {
          */
         this.database.commentsByASC((snapshot) => {
 
-            const NODE_LI = document.createElement('div');
+            /**
+             * @type {string} The DOMString of comments at the beginning.
+             */
+            const BEGIN_HTML = this.template.comment(snapshot.val());
 
-            NODE_LI.id = 'comment-' + snapshot.val().id;
-
-            NODE_LI.innerHTML = this.template.comment(snapshot.val());
-
-            this.COMMENT_MAIN.insertBefore(NODE_LI, this.COMMENT_MAIN.firstChild);
+            this.COMMENT_MAIN.insertAdjacentHTML('afterbegin', BEGIN_HTML);
 
             rmNum ++;
 
