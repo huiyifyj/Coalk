@@ -103,11 +103,11 @@ class Database {
      */
     loadComments (id) {
 
-        return  this.COMMENT
-                    .orderByChild('id')
-                    .endAt(id - 1)
-                    .limitToLast(this.row)
-                    .once('value');
+        return this.COMMENT
+                   .orderByChild('id')
+                   .endAt(id - 1)
+                   .limitToLast(this.row)
+                   .once('value');
 
     }
 

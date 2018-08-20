@@ -1,7 +1,6 @@
-<div align=center>💬</div>
-<br><br>
+<!-- <img src='./src/assets/fyj.png' width='80' align="right" /> -->
 
----
+# 💬
 [![TravisCI](https://travis-ci.com/huiyifyj/comment.js.svg?branch=master)](https://travis-ci.com/huiyifyj/comment.js)
 
 > 💬 A Powerful Comment System for Your Website.

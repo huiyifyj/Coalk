@@ -101,6 +101,9 @@ class App {
 
         });
 
+        /**
+         * @type {number}
+         */
         let rmNum = 0;
 
         /**
