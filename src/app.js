@@ -29,11 +29,6 @@ class App {
         this.database = new Database(this.option);
         this.template = new Template(this.option);
 
-        /**
-         * Initialize essential view interface and other configuration.
-         */
-        this.ROOT_ELEMENT.innerHTML = input + footer;
-
         this.COMMENT_MAIN = this.ROOT_ELEMENT.querySelector('#comments-main');
 
         this.controller();
