@@ -54,8 +54,15 @@
         .comment-content {
             display: block;
             margin-left: 3.0rem;
-            margin-bottom: 8px;
             font-size: 15px;
+
+            .comment-meta {
+                margin: 6px 0 0 0;
+                line-height: 18px;
+                color: rgba(0,0,0,0.54);
+                font-size: 12px;
+                cursor: pointer;
+            }
         }
     }
 }

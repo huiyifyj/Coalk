@@ -7,6 +7,7 @@ module.exports = {
     submit: '提交',
     comments: '留言',
     loadMore: '加载更多',
+    reply: '回复',
 
     time: {
 

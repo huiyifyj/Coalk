@@ -7,6 +7,7 @@ module.exports = {
     submit: 'Comment',
     comments: 'Comments',
     loadMore: 'Load More...',
+    reply: 'reply',
 
     time: {
 
