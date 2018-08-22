@@ -36,7 +36,7 @@ class Template {
      */
     comment (commentData) {
 
-        const date = new Date(commentData.time);
+        const date = new Date(commentData.time).toLocaleString();
 
         return `<div class="comments-wrap" id="comment-${commentData.id}"><div class="comment-body"><img class="avatar-img" src="${this.cdn + md5(commentData.email)}?s=80"><div class="comment-box"><div class="username"><a href="${commentData.url}" target="_blank">${commentData.name}</a></div><div class="comment-time" title="${date}">${periodTime(date, this.languageTime)}</div></div><div class="comment-content">${commentData.comment}<div class="comment-meta"><svg viewBox="0 0 448 512" width="12px"><path fill="rgba(0,0,0,0.54)" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg> ${this.language.reply}</div></div></div></div>`;
 
