@@ -1,6 +1,6 @@
 {
   "name": "fyj",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A Comment System on Your Website in JavaScript.",
   "main": "index.js",
   "scripts": {
