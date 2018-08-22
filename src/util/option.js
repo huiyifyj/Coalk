@@ -96,6 +96,14 @@ const handleOption = (option) => {
     }
 
     /**
+     * Judge whether character `authDomain` is null or doesn't exist.
+     * @throws {error}
+     */
+    if (!option.authDomain) {
+        throw `\n'authDomain' must be non-empty strings`;
+    }
+
+    /**
      * Make sure the comments number is greater than 0.
      * @throws {error}
      */
