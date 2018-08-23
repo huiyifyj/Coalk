@@ -1,0 +1,25 @@
+# GitLab CI configuration
+image: node:latest
+
+# Cache folder setting
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - test
+  - build
+
+before_script:
+  - npm install
+
+test:
+  stage: test
+  script:
+    - npm run test
+
+build:
+  stage: build
+  script:
+    - npm run build
+    - npm run dev-dist
