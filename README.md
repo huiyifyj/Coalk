@@ -1,7 +1,7 @@
 <!-- <img src='./src/assets/fyj.png' width='80' align="right" /> -->
 
 # 💬
-[![TravisCI](https://img.shields.io/travis/huiyifyj/comment.js.svg)](https://travis-ci.org/huiyifyj/comment.js)
+[![TravisCI](https://img.shields.io/travis/com/huiyifyj/comment.js.svg?style=flat-square&logo=travis)](https://travis-ci.org/huiyifyj/comment.js)
 
 > 💬 A Powerful Comment System for Your Website.
 
