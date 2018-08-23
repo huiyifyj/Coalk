@@ -1,4 +1,5 @@
 # GitLab CI configuration
+# https://gitlab.com/huiyifyj/comment.js
 image: node:latest
 
 # Cache folder setting
