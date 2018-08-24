@@ -1,3 +1,4 @@
+# Travis CI configuration
 language: node_js
 
 node_js:
@@ -5,9 +6,17 @@ node_js:
 
 install: npm install
 
-script:
-  - npm test
+jobs:
+  include:
+    - stage: test
+      script:
+        - npm test
+    - stage: build
+      script:
+        - npm run build
+        - npm run dev-dist
 
+# Cache folder setting
 cache:
   directories:
     - node_modules
