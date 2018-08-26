@@ -1,5 +1,5 @@
 import assert from 'assert';
-import language from '../../src/i18n/lang';
+import language from '../../src/i18n/language';
 
 import zhCn from '../../src/i18n/zh-cn';
 import en from '../../src/i18n/en';

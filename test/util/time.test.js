@@ -2,7 +2,7 @@ import assert from 'assert';
 
 import time from '../../src/util/time';
 
-import languageTime from '../../src/i18n/lang';
+import languageTime from '../../src/i18n/language';
 
 const lang = languageTime('en').time;
 
