@@ -1,7 +1,7 @@
 import md5 from '../util/md5';
 import periodTime from '../util/time';
 
-import languageObj from '../i18n/lang';
+import languageObj from '../i18n/language';
 
 /**
  * @class Template
