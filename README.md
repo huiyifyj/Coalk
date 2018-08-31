@@ -13,13 +13,13 @@
 ## Features
 - Simple and lightweight.
 - No server-side implementation.
-- Authentication with gravatr json API.
+- Support on authentication with gravatr json API.
 - Serverless, data be stored in firebase realtime database.
 
 ## Install
 - Via npm :
 ```bash
-npm i fyj -save
+# Temporary vacancy
 ```
 - Import CDN :
 ```html
@@ -48,6 +48,15 @@ new FYJ({
 });
 </script>
 ```
+#### About options parameters
+Option | Default | Description
+---|---|---
+`cdn` | `https://gravatar.loli.net/avatar/` | `string`<br> The gravatar CDN url.
+`row` | `8` | `number`<br> The comment number.
+`language` | `(navigator.language || navigator.browserLanguage).toLowerCase()` | `string`<br> The language setting, values: 'en', 'zh-cn'.
+`apiKey` | `null` | `string`<br> Your firebase apiKey.
+`authDomain` | `null` | `string`<br> Your firebase Authentication authDomain.
+`databaseURL` | `null` | `string`<br> Your firebase realtime database databaseURL.
 
 ## Development
 ```bash
