@@ -48,16 +48,4 @@ const periodTime = (time, languageTime) => {
 
 }
 
-/**
- * Format The Date.
- *
- * @param {Date} time The comment posted time.
- * @returns {String} Generat format time.
- */
-const formatData = (time) => {
-
-    return `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes()}`;
-
-}
-
 export default periodTime;
