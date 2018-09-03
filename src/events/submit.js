@@ -48,9 +48,18 @@ export default (database) => {
  * @return {boolean}
  */
 const checkInput = (data) => {
+
+    /**
+     * @type {RegExp} url RegExp.
+     */
     const urlReg = /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
 
-    return (data.name && data.email && data.comment && urlReg.test(data.url)) ?
+    /**
+     * @type {RegExp} email RegExp.
+     */
+    const emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+    return (data.name && data.comment && urlReg.test(data.url) && emailReg.test(data.email)) ?
         true :
         false;
 }

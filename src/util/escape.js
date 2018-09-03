@@ -7,8 +7,7 @@
 const escape = (input) => {
 
     /**
-     * A RegExp contain `/`.
-     * @type {RegExp}
+     * @type {RegExp} A RegExp contain `/`.
      */
     const RegString = /[/]/g;
 
