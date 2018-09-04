@@ -38,7 +38,6 @@ describe('Language Test', function () {
     });
 
     it('Other Language Setting Test.', function () {
-        console.log(languageOther())
         assert.equal(language(languageOther), en);
     });
 

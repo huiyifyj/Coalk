@@ -52,8 +52,8 @@ new FYJ({
 Option | Default | Description
 ---|---|---
 `cdn` | `https://gravatar.loli.net/avatar/` | `string`<br> The gravatar CDN url.
-`row` | `8` | `number`<br> The comment number.
-`language` | `(navigator.language || navigator.browserLanguage).toLowerCase()` | `string`<br> The language setting, values: 'en', 'zh-cn'.
+`row` | `8` | `number`<br> The comment maximum number loaded initially.
+`language` | `navigator.browserLanguage.toLowerCase()` | `string`<br> The language setting, values: 'en', 'zh-cn'.
 `apiKey` | `null` | `string`<br> Your firebase apiKey.
 `authDomain` | `null` | `string`<br> Your firebase Authentication authDomain.
 `databaseURL` | `null` | `string`<br> Your firebase realtime database databaseURL.
