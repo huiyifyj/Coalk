@@ -2,7 +2,6 @@ import handleOption from './util/option';
 
 import submit from './events/submit';
 
-import input from './view/input.html';
 import footer from './view/footer.html';
 import noComment from './view/noComment.html';
 import loading from './view/loading.html';
@@ -24,10 +23,11 @@ class App {
         this.option = handleOption(option);
         this.ROOT_ELEMENT = this.option.container;
 
+        this.template = new Template(this.option);
+
         this.init();
 
         this.database = new Database(this.option);
-        this.template = new Template(this.option);
 
         this.COMMENT_MAIN = this.ROOT_ELEMENT.querySelector('#comments-main');
 
@@ -60,7 +60,7 @@ class App {
         /**
          * Initialize essential view interface and other configuration.
          */
-        this.ROOT_ELEMENT.innerHTML = input + footer;
+        this.ROOT_ELEMENT.innerHTML = this.template.input() + footer;
 
     }
 
