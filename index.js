@@ -5,7 +5,7 @@ import './src/scss/index.scss';
 
 /**
  * Print information on the console.
- * 'APP_VERSION' is defined in webpack config file.
+ * 'APP_VERSION' and 'APP_NAME' is defined in webpack config file.
  */
 console.info(`%c${APP_NAME.toUpperCase()}%c
 Version: ${APP_VERSION}
