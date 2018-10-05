@@ -1,4 +1,4 @@
-import app from './src/app';
+import Comment from './src/app';
 
 // Import CSS stylesheet
 import './src/scss/index.scss';
@@ -14,4 +14,4 @@ Huiyi.FYJ (https://github.com/huiyifyj/comment.js)`,
 'font-size: 18px; color: #3b3e43;',
 'font-size: 12px; color: rgba(0,0,0,0.38);');
 
-export default app;
+export default Comment;
