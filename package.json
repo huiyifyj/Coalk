@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --watch --colors",
     "dev-dist": "cross-env NODE_ENV=development webpack --config config/webpack.dev.js --progress --display-error-details --colors",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js --progress --display-error-details --colors",
-    "test": "mocha"
+    "test": "mocha --recursive --require @babel/register"
   },
   "keywords": [
     "fyj",
