@@ -57,7 +57,7 @@ const checkInput = (data) => {
     /**
      * @type {RegExp} email RegExp.
      */
-    const emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    const emailReg = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 
     return (data.name && data.comment && urlReg.test(data.url) && emailReg.test(data.email)) ?
         true :
