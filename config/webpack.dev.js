@@ -1,5 +1,5 @@
 /**
- * Webpack Development Environment Configuration
+ * Webpack Development Environment Configuration.
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -11,13 +11,13 @@ module.exports = {
     devtool: 'cheap-module-source-map',
 
     entry: {
-        fyj: './index.js'
+        coalk: './index.js'
     },
 
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
         filename: '[name].js',
-        library: 'FYJ',
+        library: 'Coalk',
         libraryTarget: 'umd',
         libraryExport: 'default',
         umdNamedDefine: true
@@ -45,7 +45,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             APP_VERSION: `'${require('../package.json').version}'`,
-            APP_NAME: `'${require('../package.json').name}'`
+            APP_NAME: 'Coalk'
         })
     ],
 

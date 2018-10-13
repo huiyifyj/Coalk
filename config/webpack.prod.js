@@ -6,7 +6,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const pkg = require('../package.json');
 
-const BANNER = `${pkg.name.toUpperCase()} v${pkg.version}
+const BANNER = `Coalk v${pkg.version}
 Copyright (c) 2018 ${pkg.author.name}.`
 
 module.exports = {
@@ -16,13 +16,13 @@ module.exports = {
     devtool: 'source-map',
 
     entry: {
-        fyj: './index.js'
+        coalk: './index.js'
     },
 
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
         filename: '[name].min.js',
-        library: 'FYJ',
+        library: 'Coalk',
         libraryTarget: 'umd',
         libraryExport: 'default',
         umdNamedDefine: true
@@ -36,7 +36,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             APP_VERSION: `'${require('../package.json').version}'`,
-            APP_NAME: `'${require('../package.json').name}'`
+            APP_NAME: 'Coalk'
         }),
         new webpack.BannerPlugin({
             banner: BANNER,
