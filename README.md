@@ -29,7 +29,7 @@ $ npm i coalk
 $ npm i
 $ npm run build
 ```
-Then generate `fyj.min.css` and `fyj.min.js` and their sourcemap files in `dist` folder.
+Then generate `coalk.min.css` and `coalk.min.js` and their sourcemap files in `dist` folder.
 
 ## Usage
 Add a container to you page:
