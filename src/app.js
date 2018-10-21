@@ -53,11 +53,6 @@ class App {
         });
 
         /**
-         * Login firebase authentication.
-         */
-        firebase.auth().signInWithEmailAndPassword("i@huiyifyj.cn", "commentjs");
-
-        /**
          * Initialize essential view interface and other configuration.
          */
         this.ROOT_ELEMENT.innerHTML = this.template.input() + footer;
