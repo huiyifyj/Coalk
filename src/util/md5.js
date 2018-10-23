@@ -1,7 +1,7 @@
 /**
  * This is a file that is used to convert string to md5 hash.
  * - (c) 2018, Huiyi.FYJ
- * - Licensed: [MIT](https://opensource.org/licenses/MIT)
+ * - License: [MIT](https://opensource.org/licenses/MIT)
  * - Inspired by [Paul Johnston](http://pajhome.org.uk/crypt/md5), under the BSD License.
  *
  * Convert string to md5.
