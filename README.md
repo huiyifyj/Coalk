@@ -34,7 +34,7 @@ Then generate `coalk.min.css` and `coalk.min.js` and their sourcemap files in `d
 ## Usage
 Add a container to you page:
 ```html
-<div id="fyj"></div>
+<div id="coalk"></div>
 ```
 Then use the Javascript code below to new a comment instance:
 ```html

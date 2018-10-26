@@ -17,7 +17,7 @@ const handleOption = (option) => {
         /**
          * @type {HTMLDivElement} HTMLDivElement accommodate Comment System.
          */
-        container: document.getElementById('fyj'),
+        container: document.getElementById('coalk'),
 
         /**
          * Default cdn is https://gravatar.loli.net/avatar/
