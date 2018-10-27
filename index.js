@@ -10,7 +10,7 @@ import './src/scss/index.scss';
 console.info(`%cCoalk%c
 Version: ${APP_VERSION}
 Copyright © ${new Date().getFullYear()}
-Huiyi.FYJ (https://github.com/huiyifyj/comment.js)`,
+Huiyi.FYJ (https://github.com/huiyifyj/Coalk)`,
 'font-size: 18px; color: #3b3e43;',
 'font-size: 12px; color: rgba(0,0,0,0.38);');
 
