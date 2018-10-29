@@ -39,7 +39,7 @@ Add a container to you page:
 Then use the Javascript code below to new a comment instance:
 ```html
 <script>
-new FYJ({
+new Coalk({
     apiKey: 'Firebase apiKey',
     databaseURL: 'Firebase databaseURL',
     authDomain: "Firebase authDomain",
