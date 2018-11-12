@@ -6,6 +6,7 @@ package-lock.json
 
 # yarn
 yarn.lock
+yarn-error.log
 
 # Mac
 .DS_Store
