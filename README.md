@@ -67,10 +67,10 @@ $ npm run dev
 Then open your browser, visit http://127.0.0.1:3000/ .
 
 ## License
-> [MIT](https://github.com/huiyifyj/comment.js/blob/master/LICENSE)
+> [MIT](https://github.com/huiyifyj/Coalk/blob/master/LICENSE)
 
 <br>
 <br>
 <div align=center>
-    &copy; 2018 &nbsp; | &nbsp; <a href="https://huiyifyj.github.io" target="_blank">Huiyi.FYJ</a>
+    &copy; 2019 &nbsp; | &nbsp; <a href="https://huiyifyj.github.io" target="_blank">Huiyi.FYJ</a>
 </div>
